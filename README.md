@@ -31,4 +31,3 @@ Asegúrate de tener Node.js y npm instalados en tu sistema antes de ejecutar est
 
 
 ¡Disfruta explorando DeCamino y sus funcionalidades!
-# DeCamino-Front-lts
