@@ -1,6 +1,7 @@
 import { Chip } from "@nextui-org/react"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View"
+import Layout from "./Layout"
 
 function App() {
 
@@ -13,9 +14,11 @@ function App() {
       </Route>
 
       <Route path="Profile" element={
-        <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-          <Chip className="text-white font-bold" color="danger" variant="shadow">PROFILE</Chip>
-        </main>
+        <Layout>
+          <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
+            <Chip className="text-white font-bold" color="danger" variant="shadow">PROFILE</Chip>
+          </main>
+        </Layout>
       }>
       </Route>
 
