@@ -22,6 +22,10 @@ export default {
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],
       },
+      screens: {
+        'xs': '475px',
+        '2xs': '390px',
+      },
 
     },
   },

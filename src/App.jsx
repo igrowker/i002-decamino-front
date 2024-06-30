@@ -9,7 +9,9 @@ function App() {
     <>
     <Routes>
       <Route path="Home" element={
-        <Landing_Page/>
+        <Layout>
+          <Landing_Page/>
+        </Layout>
       }>
       </Route>
 
