@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Footer } from './components/UI/Footer';
-import { Navbar_Landing_Page } from './components/LandingPage/Navbar.LanP';
+import { Navbar_Landing_Page } from './components/UI/Navbar_Landing_Page';
+
 
 const Layout = ({ children }) => {
     return (
