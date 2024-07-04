@@ -1,3 +1,5 @@
+import { SliderDestinosPopulares } from "./SliderDestinosPopulares"
+
 export const DestinosPopulares = () => {
     return (
       <main className="bg-white w-full px-2 xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3">
@@ -12,7 +14,10 @@ export const DestinosPopulares = () => {
               
           </section>
           
-          {/* //TODO Slider */}
+          <div className="pb-16">
+              <SliderDestinosPopulares />
+          </div>
+          
       </main>
   
     )
