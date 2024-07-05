@@ -1,4 +1,3 @@
-// authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { loadState, saveState } from '../utilities/localStorage.util';
 
@@ -47,8 +46,7 @@ export const authSlice = createSlice({
         }
       })
     },
-
   },
 });
 
-export const { login, logout, setToken,updateUser } = authSlice.actions;
+export const { login, logout, setToken, updateUser } = authSlice.actions;

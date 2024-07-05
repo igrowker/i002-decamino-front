@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../store/auth.slice';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +20,11 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post('https://decamino-back.onrender.com/api/user/login', { email, password });
-      console.log(response.data);
+      const { token, user } = response.data;
+
+      dispatch(login({ token, user }));
+
+      navigate('/home');
     } catch (err) {
       setError('Error al iniciar sesión. Por favor, verifica tus credenciales.');
       console.error(err);
