@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     notRobot: false,
     role: '',
   });
+
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -17,23 +21,40 @@ const RegisterForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setLoading(true);
+    setError('');
+
+    // eslint-disable-next-line no-unused-vars
+    const { notRobot, ...submitData } = formData
+
+    try {
+      const response = await axios.post('https://decamino-back.onrender.com/api/user/register', submitData);
+      console.log(response.data);
+    } catch (err) {
+      setError('Error al registrarse. Por favor, verifica los datos e intenta nuevamente.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form className="max-w-md mx-auto mt-8 p-6 shadow-md rounded-md bg-white" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-bold mb-4">Regístrate</h2>
       <p className="text-gray-600 mb-6">Crea tu cuenta para empezar el viaje</p>
+
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700" htmlFor="name">Nombre</label>
+        <label className="block text-sm font-medium text-gray-700" htmlFor="username">Nombre de usuario</label>
         <input
           type="text"
-          name="name"
-          id="name"
-          placeholder="Tu nombre"
-          value={formData.name}
+          name="username"
+          id="username"
+          placeholder="Nombre de Usuario"
+          value={formData.username}
           onChange={handleChange}
           className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           required
@@ -76,8 +97,8 @@ const RegisterForm = () => {
           required
         >
           <option value="">Selecciona una opción</option>
-          <option value="Comerciante">Comerciante</option>
-          <option value="Viajero">Viajero</option>
+          <option value="merchant">Comercio</option>
+          <option value="traveler">Viajero</option>
         </select>
       </div>
       <div className="mb-6 flex items-center">
@@ -95,8 +116,9 @@ const RegisterForm = () => {
       <button
         type="submit"
         className="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+        disabled={loading}
       >
-        Registrarme
+        {loading ? 'Cargando...' : 'Registrarme'}
       </button>
       <p className="mt-6 text-center text-sm text-gray-600">
         ¿Ya tienes una cuenta? <a href="/login" className="text-teal-500 hover:text-teal-700">Inicia sesión</a>

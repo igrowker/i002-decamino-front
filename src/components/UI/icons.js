@@ -1,17 +1,15 @@
-
-import { IoLogoFacebook,IoLogoInstagram } from "react-icons/io5";
-import { GiCampCookingPot } from "react-icons/gi";
-import { TbTrekking } from "react-icons/tb";
-import { MdFestival,MdOutlineFoodBank } from "react-icons/md";
-
-
+import { IoLogoFacebook, IoLogoInstagram } from "react-icons/io5";
+import { GiMountainRoad } from "react-icons/gi";
+import { MdFestival, MdFoodBank } from "react-icons/md";
+import { FaKitchenSet, FaMapLocationDot } from "react-icons/fa6";
 
 
 export const ICONS = {
-    INSTAGRAM: <IoLogoInstagram />,
-    FACEBOOK: <IoLogoFacebook />,
-    COCINA: <GiCampCookingPot />,
-    TREKKING: <TbTrekking />,
-    FESTIVALES: <MdFestival />,
-    GASTRONOMIA: <MdOutlineFoodBank />,
-  };
+  INSTAGRAM:<IoLogoInstagram />,
+  FACEBOOK: <IoLogoFacebook />,
+  COCINA: <FaKitchenSet />,
+  TREKKING: <GiMountainRoad />,
+  FESTIVALES: <MdFestival />,
+  GASTRONOMIA: <MdFoodBank />,
+  LOCATION: <FaMapLocationDot />,
+};
