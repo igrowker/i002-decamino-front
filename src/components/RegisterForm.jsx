@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -10,8 +12,9 @@ const RegisterForm = () => {
     role: '',
   });
 
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -21,19 +24,70 @@ const RegisterForm = () => {
     });
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
 
-    // eslint-disable-next-line no-unused-vars
-    const { notRobot, ...submitData } = formData
+    if (!validateEmail(formData.email)) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Por favor, ingresa un correo electrónico válido.',
+        icon: 'error',
+      });
+      return;
+    }
+
+    if (!validatePassword(formData.password)) {
+      Swal.fire({
+        title: 'Error',
+        text: 'La contraseña debe tener al menos 8 caracteres, incluyendo una letra, un número y un carácter especial.',
+        icon: 'error',
+      });
+      return;
+    }
+
+    setLoading(true);
+
+// eslint-disable-next-line no-unused-vars
+    const { notRobot, ...submitData } = formData;
 
     try {
       const response = await axios.post('https://decamino-back.onrender.com/api/user/register', submitData);
       console.log(response.data);
+
+      Swal.fire({
+        title: '¡Registro exitoso!',
+        text: 'Serás redirigido a la página principal.',
+        icon: 'success',
+        timer: 2000,
+        timerProgressBar: true,
+        willClose: () => {
+          navigate('/home');
+        }
+      });
     } catch (err) {
-      setError('Error al registrarse. Por favor, verifica los datos e intenta nuevamente.');
+      if (err.response && err.response.data && err.response.data.message === 'Usuario ya existe') {
+        Swal.fire({
+          title: 'Error',
+          text: 'El usuario o correo electrónico ya está registrado.',
+          icon: 'error',
+        });
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al registrarse. Por favor, verifica los datos e intenta nuevamente.',
+          icon: 'error',
+        });
+      }
       console.error(err);
     } finally {
       setLoading(false);
@@ -44,8 +98,6 @@ const RegisterForm = () => {
     <form className="max-w-md mx-auto mt-8 p-6 shadow-md rounded-md bg-white" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-bold mb-4">Regístrate</h2>
       <p className="text-gray-600 mb-6">Crea tu cuenta para empezar el viaje</p>
-
-      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700" htmlFor="username">Nombre de usuario</label>
