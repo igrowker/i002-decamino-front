@@ -6,12 +6,10 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  
 } from "@nextui-org/react";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 
 export const Navbar_Landing_Page = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,17 +33,17 @@ export const Navbar_Landing_Page = () => {
     },
     {
       name: "Iniciar sesión",
-      href: "/",
+      href: "/login",
     },
     {
       name: "Registrarme",
-      href: "/",
+      href: "/register",
     },
   ];
 
   return (
-    <Navbar  style={{paddingLeft:"10%",paddingRight:"5%"}} className="fixed  w-full bg-transparent z-50 text-white" onMenuOpenChange={setIsMenuOpen}>
-      <NavbarContent >
+    <Navbar style={{paddingLeft:"10%",paddingRight:"5%"}} className="fixed  w-full bg-transparent z-50 text-white" onMenuOpenChange={setIsMenuOpen}>
+      <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
@@ -56,11 +54,11 @@ export const Navbar_Landing_Page = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex  gap-4" >
+      <NavbarContent className="hidden sm:flex  gap-4">
         {menuItems.map((item) => (
           <NavbarItem className="mx-2 " key={item.name}>
-            <Link   color="foreground" to={item.href}>
-              <p  className={`font-nunito font-[500] `}> {item.name} </p>
+            <Link color="foreground" to={item.href}>
+              <p className={`font-nunito font-[500]`}> {item.name} </p>
             </Link>
           </NavbarItem>
         ))}
@@ -69,7 +67,7 @@ export const Navbar_Landing_Page = () => {
       <NavbarMenu>
         {menuItems.map((item) => (
           <NavbarMenuItem key={item.name}>
-            <Link className="w-full" size="lg">
+            <Link className="w-full" size="lg" to={item.href}>
               {item.name}
             </Link>
           </NavbarMenuItem>
