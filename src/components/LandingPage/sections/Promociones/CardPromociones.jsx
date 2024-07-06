@@ -5,7 +5,7 @@ export const CardPromociones = () => {
   return (
     <Card
       radius="lg"
-      className=" h-[350px] md:h-[361px] shadow-sm shadow-gray-500 overflow-hidden"
+      className=" h-[240px] md:h-[245px] w-full  overflow-hidden"
     >
       <div className="relative w-full h-full">
         <img

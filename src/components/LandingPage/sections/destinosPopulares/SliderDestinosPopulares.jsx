@@ -43,20 +43,28 @@ export const SliderDestinosPopulares = function () {
         className="mySwiper"
       >
         {imgs.map((img, i) => (
-          <SwiperSlide  key={i}>
-            <img
-              src={img}
-              className="w-[350px] md:w-[259px] h-[428px] md:h-[389px] object-cover rounded-xl relative "
-              alt="img"
-            />
-            <div className="absolute flex flex-col justify-center items-center">
-              <h2 className="text-white font-nunito font-[700] text-[36px] pt-[9rem]">Lorem ipsum</h2>
-              <p className="text-white">A 35 km de su ubicación</p>
-              <p className="text-white my-2 font-medium">Price start at <span className="text-freshMint font-medium">$10.00</span></p>
+          <SwiperSlide key={i} className="relative text-center">
+          <img
+            src={img}
+            className="w-[350px] md:w-[259px] h-[428px] md:h-[389px] object-cover rounded-xl"
+            alt="img"
+          />
+          <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/75 to-transparent rounded-xl overflow-hidden">
+            <div className="p-4 text-white">
+              <h2 className="font-nunito font-[700] text-[36px] pt-[9rem]">
+                Lorem ipsum
+              </h2>
+              <p>A 35 km de su ubicación</p>
+              <p className="my-2 font-medium">
+                Price start at <span className="text-freshMint font-medium">$10.00</span>
+              </p>
+              <div className="flex items-center justify-center">
               <StarRating />
-
+              </div>
+              
             </div>
-          </SwiperSlide>
+          </div>
+        </SwiperSlide>
         ))}
 
         <div className="swiper-button-prev"></div>

@@ -2,19 +2,17 @@ import { Button } from "@nextui-org/react";
 import HeroBg from "../../assets/Img/IMG_Hero02.webp";
 import { Planea_Tu_Ruta } from "./sections/Planea_Tu_Ruta";
 
-
 export const HeroLandPage = () => {
   return (
     <>
       <main
-        className="relative bg-cover bg-center h-[942px] pt-[120px] md:pt-[170px] flex flex-col justify-between"
+        className="relative bg-cover bg-center h-[900px] pt-[110px] md:pt-[120px] flex flex-col justify-between"
         style={{
           backgroundImage: `url(${HeroBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom 15%",
         }}
       >
-        {/* gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1200]/80 to-[#454545]/5"></div>
 
         <section className="relative mx-5 md:mx-[194px] flex flex-col items-center md:items-start text-center md:text-left">
@@ -27,14 +25,15 @@ export const HeroLandPage = () => {
           <div>
             <p className="font-nunito font-[500] text-[20px] text-white mt-20 md:mt-10">
               Sumérgete en una experiencia única explorando las joyas de los
-              pueblos rurales. Planifica tus rutas gastronómicas, apoya a pequeños
-              negocios y disfruta de auténticas tradiciones locales.
+              pueblos rurales. Planifica tus rutas gastronómicas, apoya a
+              pequeños negocios y disfruta de auténticas tradiciones locales.
             </p>
           </div>
 
-          <div className="w-full">
+          <div className="w-full mt-36 md:mt-10">
+            
             <Button
-              className="mt-[20rem] md:mt-10   font-nunito text-white font-[600] bg-greenT w-full  md:w-[209px] text-lg"
+              className="font-nunito text-white font-[600] bg-greenT w-full md:w-[209px] text-lg"
               radius="full"
             >
               Descubrir
