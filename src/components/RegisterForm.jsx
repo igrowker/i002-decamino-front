@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import fondo_register from '../assets/Img/bg-login.webp';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -95,7 +96,8 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className="max-w-md mx-auto mt-8 p-6 shadow-md rounded-md bg-white" onSubmit={handleSubmit}>
+    <div className="min-h-screen bg-cover bg-center flex flex-row items-center justify-center" style={{ backgroundImage: `url(${fondo_register})` }}>
+    <form className="max-w-md mx-auto rounded-t-lg mt-8 p-6 bg-white" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-bold mb-4">Regístrate</h2>
       <p className="text-gray-600 mb-6">Crea tu cuenta para empezar el viaje</p>
 
@@ -176,6 +178,7 @@ const RegisterForm = () => {
         ¿Ya tienes una cuenta? <a href="/login" className="text-teal-500 hover:text-teal-700">Inicia sesión</a>
       </p>
     </form>
+    </div>
   );
 };
 
