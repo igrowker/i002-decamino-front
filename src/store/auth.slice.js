@@ -15,7 +15,6 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       saveState("auth", action.payload)
     },
-
     logout: (state) => {
       state.token = '';
       state.user = {};
@@ -24,7 +23,6 @@ export const authSlice = createSlice({
         user: {}
       })
     },
-
     setToken: (state, action) => { 
       state.token = action.payload;
       saveState("auth", {
@@ -32,7 +30,6 @@ export const authSlice = createSlice({
         user: state.user
       })
     },
-
     updateUser: (state, action) => {
       state.user = {
         ...state.user,

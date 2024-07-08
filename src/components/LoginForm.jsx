@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 import { login } from '../store/auth.slice';
 
 const LoginForm = () => {
@@ -20,9 +21,18 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post('https://decamino-back.onrender.com/api/user/login', { email, password });
-      const { token, user } = response.data;
+      const { token } = response.data;
 
-      dispatch(login({ token, user }));
+      // Guarda el token en el local storage
+      localStorage.setItem('token', token);
+
+      // Decodifica el token
+      const data_token = jwtDecode(token);
+
+      // Verificacion de los datos del usuario
+      console.log('Datos del usuario:', data_token);
+
+      dispatch(login({ token, user: data_token }));
 
       navigate('/home');
     } catch (err) {
