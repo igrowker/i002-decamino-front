@@ -3,12 +3,12 @@ import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./slider.css";
-import IMG1 from "../../../../assets/Img/Destinos_01.webp";
-import IMG2 from "../../../../assets/Img/Destinos_02.webp";
-import IMG3 from "../../../../assets/Img/Destinos_03.webp";
-import IMG4 from "../../../../assets/Img/Destinos_04.webp";
-import StarRating from "./StartRating";
+import "../../assets/CSS/slider.css";
+import IMG1 from "../../assets/Img/Destinos_01.webp";
+import IMG2 from "../../assets/Img/Destinos_02.webp";
+import IMG3 from "../../assets/Img/Destinos_03.webp";
+import IMG4 from "../../assets/Img/Destinos_04.webp";
+import StarRating from "../UI/StartRating";
 
 const imgs = [IMG1, IMG2, IMG3, IMG4, IMG1, IMG2];
 

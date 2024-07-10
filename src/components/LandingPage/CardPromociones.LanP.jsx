@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { Card, CardFooter } from "@nextui-org/react";
-import IMG_Promociones_01 from "../../../../assets/Img/Promociones_01.webp";
-import IMG_Promociones_02 from "../../../../assets/Img/Promociones_02.webp";
-import IMG_Promociones_03 from "../../../../assets/Img/Promociones_03.webp";
-import IMG_Promociones_04 from "../../../../assets/Img/Promociones_04.webp";
-import IMG_Promociones_05 from "../../../../assets/Img/Promociones_05.webp";
+import IMG_Promociones_01 from "../../assets/Img/Promociones_01.webp";
+import IMG_Promociones_02 from "../../assets/Img/Promociones_02.webp";
+import IMG_Promociones_03 from "../../assets/Img/Promociones_03.webp";
+import IMG_Promociones_04 from "../../assets/Img/Promociones_04.webp";
+import IMG_Promociones_05 from "../../assets/Img/Promociones_05.webp";
 
 export const CardPromociones = ({img}) => {
 

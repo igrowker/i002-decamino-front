@@ -1,8 +1,8 @@
 import { Button } from "@nextui-org/react";
 import HeroBg from "../../assets/Img/IMG_Hero02.webp";
-import { Planea_Tu_Ruta } from "./sections/Planea_Tu_Ruta";
+import { Planea_Tu_Ruta } from "../../components/LandingPage/Planea_Tu_Ruta.LanP";
 
-export const HeroLandPage = () => {
+export const Section_HeroLandPage = () => {
   return (
     <>
       <main
@@ -20,7 +20,7 @@ export const HeroLandPage = () => {
             <h1 className="text-white font-nunito font-[600] text-[32px] xs:text-[40px] sm:text-[48px] md:text-[40px] lg:text-[48px]">
               Explora el turismo rural, descubre tu próxima aventura
             </h1>
-            <p className="font-nunito font-[400] text-[16px] xs:text-[20px] sm:text-[24px] md:text-[20px] lg:text-[24px] text-gray-300 mt-5 md:mt-2">
+            <p className="font-nunito font-[400] text-[16px] sm:text-[20px] md:text-[16px] lg:text-[20px] text-gray-300 mt-5 md:mt-2">
               Sumérgete en una experiencia única explorando las joyas de los
               pueblos rurales. Planifica tus rutas gastronómicas, apoya a
               pequeños negocios y disfruta de auténticas tradiciones locales.

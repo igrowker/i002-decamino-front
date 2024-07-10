@@ -1,21 +1,20 @@
 import { Footer } from "../../components/UI/Footer";
-
-import { HeroLandPage } from "../../components/LandingPage/Hero.LanP";
 import { Navbar_Landing_Page } from "../../components/UI/Navbar_Landing_Page";
-import { Actividades } from "../../components/LandingPage/sections/Actividades";
 
-import { Promociones } from "../../components/LandingPage/sections/Promociones/Promociones";
-import { DestinosPopulares } from "../../components/LandingPage/sections/destinosPopulares/DestinosPopulares";
+import { Section_HeroLandPage } from "../../sections/LandingPage/Section_Hero.LanP";
+import { Section_Actividades } from "../../sections/LandingPage/Section_Actividades.LanP";
+import { Section_Promociones } from "../../sections/LandingPage/Section_Promociones.LanP";
+import { Section_DestinosPopulares } from "../../sections/LandingPage/Section_DestinosPopulares.LanP";
 
 
 export const Landing_Page = () => {
   return (
     <>
       <Navbar_Landing_Page />
-      <HeroLandPage />
-      <Actividades />
-      <DestinosPopulares />
-      <Promociones />
+      <Section_HeroLandPage/>
+      <Section_Actividades />
+      <Section_DestinosPopulares />
+      <Section_Promociones />
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
-import { CardPromociones } from "./CardPromociones";
+import { CardPromociones } from "../../components/LandingPage/CardPromociones.LanP";
 
 
-export const Promociones = () => {
+export const Section_Promociones = () => {
   return (
     <main className="bg-gray100 w-full px-2 xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3 h-auto">
       <section className="py-8 ">

@@ -3,7 +3,7 @@ import { Button, DateRangePicker, Input } from "@nextui-org/react";
 export const Planea_Tu_Ruta = () => {
   return (
     <div  className="w-full h-full flex items-center justify-center">
-      <div className="text-center w-[90%] pd:w-[85%] h-[90%] md:py-5">
+      <div className="text-center w-[100%] md:w-[85%] h-[100%] md:pb-8 md:pt-5">
         <h2 className="text-white font-nunito text-[2em]">
           Planea tu ruta rural
         </h2>

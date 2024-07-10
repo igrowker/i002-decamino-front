@@ -2,7 +2,7 @@ import { FaKitchenSet } from "react-icons/fa6";
 import { GiMountainRoad } from "react-icons/gi";
 import { MdFestival, MdFoodBank } from "react-icons/md";
 
-export const Actividades = () => {
+export const Section_Actividades = () => {
   return (
     <main className=" bg-gray100 md:bg-softWood w-full px-2 xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3">
       <section className="py-8 ">
