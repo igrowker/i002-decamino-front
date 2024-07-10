@@ -1,30 +1,51 @@
 import logo from "/logosinFondo.png";
+import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa6";
 
 export const Footer = () => {
   return (
-    <footer className="bg-softWood text-white py-8 px-8 md:px-20 flex flex-col justify-between min-h-[200px]">
-  <div className="flex flex-col md:flex-row justify-between w-full">
-    <div className="hidden md:block font-bold text-2xl">
+    <footer className="bg-softWood text-gray-900/70 py-8 px-8 md:px-20 flex flex-col justify-between min-h-[200px]">
+  <div className="flex flex-col sm:flex-row justify-between w-full">
+    <div className="hidden sm:block font-bold text-2xl">
       <div className="flex items-center">
-      <img className="w-[60px] h-[56px]" src={logo} alt="DeCamino" />
+        <img className="w-[60px] h-[56px]" src={logo} alt="DeCamino" />
         <h2>DeCamino</h2>
-        
       </div>
     </div>
-    <div className="flex flex-col items-end space-y-2 mt-4 md:mt-0 md:ml-auto">
-      <a href="#about" className="text-base font-nunito hover:underline">Sobre Nosotros</a>
-      <a href="#contact" className="text-base font-nunito hover:underline">Contacto</a>
-      <a href="#privacy" className="text-base font-nunito hover:underline">Políticas de privacidad</a>
-      <a href="#cookies" className="text-base font-nunito hover:underline">Cookies</a>
+    <div className="flex flex-col items-end space-y-2 mt-4 sm:mt-0 sm:ml-auto font-semibold">
+      <a href="#about" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Sobre Nosotros</a>
+      <a href="#contact" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Contacto</a>
+      <a href="#privacy" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Políticas de privacidad</a>
+      <a href="#cookies" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Cookies</a>
     </div>
   </div>
   <div className="flex flex-col w-1/2 md-w-full mt-4">
-    <div  className="flex md:hidden items-center justify-start  max-w-[60px]">
-      <img className="w-[60px] h-[56px]" src={logo} alt="DeCamino" />
+    <div  className="flex items-center justify-start gap-2 px-4 sm:py-2">
+      <img className="sm:hidden w-[60px] h-[56px]" src={logo} alt="DeCamino" />
+
+      <a href="/">
+        <span className="text-3xl hover:text-greenT/90 hover:cursor-pointer" style={{transition:"0.5s"}}>
+          <FaFacebook/>
+        </span>
+      </a>
+
+      <a href="/">
+        <span className="text-3xl hover:text-greenT/90 hover:cursor-pointer" style={{transition:"0.5s"}}>
+          <FaInstagram/>
+        </span>
+      </a>
+
+      <a href="/">
+        <span className="text-3xl hover:text-greenT/90 hover:cursor-pointer" style={{transition:"0.5s"}}>
+          <FaXTwitter/>
+        </span>
+      </a>
+
     </div>
     
   </div>
-  <hr className="border-t border-gray-200" />
+  <hr className="border-t border-gray-900/70" />
     <div className="text-sm font-nunito text-center mt-2">
       © 2024 DeCamino - Todos los derechos reservados.
     </div>

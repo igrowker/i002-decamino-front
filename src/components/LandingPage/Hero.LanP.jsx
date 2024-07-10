@@ -6,7 +6,7 @@ export const HeroLandPage = () => {
   return (
     <>
       <main
-        className="relative bg-cover bg-center h-[900px] pt-[110px] md:pt-[120px] flex flex-col justify-between"
+        className="relative bg-cover bg-center min-h-screen pt-[48px] md:pt-[64px] flex flex-col justify-between"
         style={{
           backgroundImage: `url(${HeroBg})`,
           backgroundSize: "cover",
@@ -15,25 +15,22 @@ export const HeroLandPage = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1200]/80 to-[#454545]/5"></div>
 
-        <section className="relative mx-5 md:mx-[194px] flex flex-col items-center md:items-start text-center md:text-left">
-          <div className="">
-            <h1 className="text-white font-nunito font-[700] text-[42px] md:text-[50px] lg:text-[64px]">
+        <section className="relative px-2 xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3 flex flex-col items-center md:items-start text-center md:text-left">
+          <div>
+            <h1 className="text-white font-nunito font-[600] text-[32px] xs:text-[40px] sm:text-[48px] md:text-[40px] lg:text-[48px]">
               Explora el turismo rural, descubre tu próxima aventura
             </h1>
-          </div>
-
-          <div>
-            <p className="font-nunito font-[500] text-[20px] text-white mt-20 md:mt-10">
+            <p className="font-nunito font-[400] text-[16px] xs:text-[20px] sm:text-[24px] md:text-[20px] lg:text-[24px] text-gray-300 mt-5 md:mt-2">
               Sumérgete en una experiencia única explorando las joyas de los
               pueblos rurales. Planifica tus rutas gastronómicas, apoya a
               pequeños negocios y disfruta de auténticas tradiciones locales.
             </p>
           </div>
 
-          <div className="w-full mt-36 md:mt-10">
+          <div className="w-full mt-10 md:mt-10">
             
             <Button
-              className="font-nunito text-white font-[600] bg-greenT w-full md:w-[209px] text-lg"
+              className="font-nunito text-white font-[600] bg-greenT w-[209px] text-lg"
               radius="full"
             >
               Descubrir
@@ -42,7 +39,8 @@ export const HeroLandPage = () => {
         </section>
 
         {/* Visible pantalla grande */}
-        <section className="hidden md:block bg-black/75 w-full h-[254px]">
+        <section className="hidden md:block bg-black/75 w-full h-auto px-2 
+        xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3">
           <Planea_Tu_Ruta />
         </section>
       </main>

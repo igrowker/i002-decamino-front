@@ -4,75 +4,61 @@ import logo from "/logosinFondo.png";
 const menuItems = [
   {
     name: "Inicio",
-    href: "/",
+    href: "/home",
+    isActive: true
   },
   {
     name: "Nosotros",
     href: "/",
+    isActive: false
   },
   {
     name: "Contacto",
     href: "/",
+    isActive: false
   },
   {
     name: "Mi ruta",
     href: "/",
+    isActive: false
   },
   {
     name: "Iniciar sesión",
     href: "/login",
+    isActive: false
   },
 ];
 
 export const Sidebar = () => {
   return (
-    <div className="flex  flex-col justify-between  bg-white ">
-      <div className="px-4 py-6">
+    <div className="flex flex-col justify-between bg-white rounded-b-2xl">
+      <div className="px-2 pt-2">
         <ul className="mt-6 space-y-1">
           {menuItems.map((item) => (
-            <li key={item.name}>
-              <Link
-                to={item.href}
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg "
-              >
-                <span className="ml-3">{item.name}</span>
-              </Link>
+            <li key={item.name} className={`flex items-center p-2 text-base font-bold ${ item.isActive ? "text-greenT" : "text-gray-900"} border-t-1 border-woodLogo`}>
+              <span className="ml-3">
+                <Link
+                  to={item.href}
+                >
+                  {item.name}
+                </Link>
+              </span>
             </li>
           ))}
-          <li>
+          <li className="flex items-center p-3 text-base font-bold text-white border-t-1 border-woodLogo">
             <Link
               to="/register"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg "
             >
-              <span className="ml-3">Registrarme</span>
+              <span className="py-1 px-3 bg-freshMint hover:bg-greenT hover:cursor-pointer rounded-full">Registrarme</span>
             </Link>
           </li>
         </ul>
       </div>
 
-      <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">
-        <a
-          href="#"
-          className="flex items-center gap-2 bg-white p-4 hover:bg-gray-50"
-        >
-          <img
-            alt=""
-            src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="size-10 rounded-full object-cover"
-          />
-
-          <div className="flex justify-between w-full">
-            <div>
-              <p className="text-xs">
-                <strong className="block font-medium">Eric Frusciante</strong>
-
-                <span> eric@frusciante.com </span>
-              </p>
-            </div>
-
-            <img className="w-[60px] h-[56px]" src={logo} alt="DeCamino" />
+      <div className="sticky inset-x-0 bottom-0 rounded-b-2xl mt-4">
+          <div className="flex justify-end w-full pt-2 pr-2 h-8 bg-woodLogo rounded-b-2xl">
+            <img className="w-[60px] h-[56px] mt-[-54px]" src={logo} alt="DeCamino" />
           </div>
-        </a>
       </div>
     </div>
   );

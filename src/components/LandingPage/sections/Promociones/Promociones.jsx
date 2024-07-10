@@ -11,19 +11,19 @@ export const Promociones = () => {
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4 my-8">
           
           <div className="border lg:col-span-2  ">
-          <CardPromociones />
+            <CardPromociones img={0}/>
           </div>
           <div className="border  ">
-            <CardPromociones />
+            <CardPromociones img={1}/>
           </div>
           <div className="border  ">
-          <CardPromociones />
+            <CardPromociones img={2}/>
           </div>
           <div className="border  ">
-          <CardPromociones />
+            <CardPromociones img={3}/>
           </div>
           <div className="border  ">
-          <CardPromociones />
+            <CardPromociones img={4}/>
           </div>
         </div>
       </section>
