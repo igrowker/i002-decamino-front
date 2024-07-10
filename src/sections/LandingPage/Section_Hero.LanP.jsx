@@ -46,7 +46,7 @@ export const Section_HeroLandPage = () => {
       </main>
 
       {/* Visible pantalla chica */}
-      <section className="block md:hidden bg-woodLogo w-full h-[618px]">
+      <section className="block md:hidden bg-woodLogo w-full h-[618px] px-3 py-5">
         <Planea_Tu_Ruta />
       </section>
     </>

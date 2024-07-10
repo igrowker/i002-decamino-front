@@ -32,7 +32,7 @@ export const Section_Actividades = () => {
             <div className="flex flex-col items-center p-4  ">
               <GiMountainRoad size={70} className="mb-4" />
               <h3 className="text-2xl font-semibold mb-2 text-woodLogo md:text-white">
-                trekking
+                Trekking
               </h3>
               <p className="text-center text-[#073D37]">
                 Explora pueblos y paisajes con las rutas guiadas y come algo al
@@ -54,7 +54,7 @@ export const Section_Actividades = () => {
             <div className="flex flex-col items-center p-4  ">
               <MdFoodBank size={70} className="mb-4" />
               <h3 className="text-2xl font-semibold mb-2 text-woodLogo md:text-white">
-                Trekking
+                Gastronomía artesanal
               </h3>
               <p className="text-center text-[#073D37]">
                 Visita restaurantes locales y descubre productos frescos y

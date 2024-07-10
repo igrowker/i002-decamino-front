@@ -2,6 +2,7 @@ import { Chip } from "@nextui-org/react"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View"
 import Layout from "./Layout"
+import { AboutUs } from "./Pages/LandingPage/AboutUs_Page.View"
 
 function App() {
 
@@ -22,10 +23,8 @@ function App() {
       }>
       </Route>
 
-      <Route path="Payment" element={
-        <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-          <Chip className="text-white font-bold" color="success" variant="shadow">PAYMENT</Chip>
-        </main>
+      <Route path="/Nosotros" element={
+        <AboutUs/>
       }>
       </Route>
 
