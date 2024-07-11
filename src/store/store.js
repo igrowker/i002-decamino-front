@@ -7,15 +7,8 @@ import modalReducer from './modalSlice'
 export const store = configureStore({
   reducer: {
     authLogin: authSlice.reducer,
-  },
-
-  reducer: {
-    route: routeReducer,
-  },
-  reducer: {
+    route: routeReducer, // Asegúrate de que el nombre aquí coincida con el utilizado en useSelector
     privacy: privacyReducer,
-  },
-  reducer: {
     modal: modalReducer,
   },
 });
