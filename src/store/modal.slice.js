@@ -11,5 +11,3 @@ export const modalSlice = createSlice({
 });
 
 export const { setCookieAcceptance } = modalSlice.actions;
-
-export default modalSlice.reducer;

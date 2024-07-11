@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authSlice } from "./auth.slice";
-import routeReducer from "./routeSlice";
-import privacyReducer from "./privacySlice";
-import modalReducer from './modalSlice'
+import { routeSlice } from "./route.slice";
+import { privacySlice } from "./privacy.slice";
+import { modalSlice } from "./modal.slice";
+
 
 export const store = configureStore({
   reducer: {
     authLogin: authSlice.reducer,
-    route: routeReducer, // Asegúrate de que el nombre aquí coincida con el utilizado en useSelector
-    privacy: privacyReducer,
-    modal: modalReducer,
+    route: routeSlice.reducer, // Asegúrate de que el nombre aquí coincida con el utilizado en useSelector
+    privacy: privacySlice.reducer,
+    modal: modalSlice.reducer,
   },
 });

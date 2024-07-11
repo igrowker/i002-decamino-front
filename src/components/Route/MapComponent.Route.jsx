@@ -1,5 +1,5 @@
 import { Marker, Popup, useMapEvents } from "react-leaflet";
-import React, {  useState } from "react";
+import {  useState } from "react";
 
 export const MapComponent = ({ center }) => {
   const [position, setPosition] = useState(null);

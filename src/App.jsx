@@ -1,9 +1,9 @@
 import { Chip } from "@nextui-org/react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
-import { PrivacyPolicy } from "./components/PrivacyPolicy";
-import { RestaurantDetail } from "./components/RestaurantDetail";
-import { RoutePlanner } from "./components/RoutePlanner";
+import { PrivacyPolicy } from "./components/UI/Modal_PrivacyPolicy";
+import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
+import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
 
 function App() {
   return (

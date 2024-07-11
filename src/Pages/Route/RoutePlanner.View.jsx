@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Input, DateInput, Button } from "@nextui-org/react";
 import { CalendarDate } from "@internationalized/date";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,9 +10,9 @@ import {
   Popup,
   useMapEvents,
 } from "react-leaflet";
-import { setStartLocation, setEndLocation } from "../store/routeSlice";
+import { setStartLocation, setEndLocation } from "../../store/route.slice";
 import "leaflet/dist/leaflet.css";
-import { MapComponent } from "./MapComponent";
+import { MapComponent } from "../../components/Route/MapComponent.Route";
 
 export const RoutePlanner = () => {
   const dispatch = useDispatch();

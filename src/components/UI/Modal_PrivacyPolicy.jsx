@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCookieAcceptance } from "../store/modalSlice";
+import { setCookieAcceptance } from "../../store/modal.slice";
 import {
   Modal,
   ModalContent,
@@ -11,6 +11,8 @@ import {
   useDisclosure,
   Image
 } from "@nextui-org/react";
+import logo from "/logosinFondo.png";
+import logo_white from "/logo.png"
 
 export const PrivacyPolicy = () => {
   const dispatch = useDispatch();
@@ -42,18 +44,28 @@ export const PrivacyPolicy = () => {
     return (
       <>
         <Modal
+          backdrop="opaque"
+          size="3xl"
           isOpen={isOpen}
           onOpenChange={onOpenChange}
           isDismissable={false}
+          placement="auto"
+          classNames={{
+            backdrop: "bg-gradient-to-br from-[#94B9FF] to-[#CDFFD8] backdrop-opacity-40",
+            base: "max-h-screen",
+            header: "h-[15%]",
+            body:"h-[70%] overflow-y-scroll pb-12 bg-gray100/45",
+            footer:"h-[15%] relative"
+          }}
         >
           <ModalContent>
             {(onClose) => (
               <>
-                <ModalHeader className="flex flex-col gap-1">
-                  Cookies
+                <ModalHeader className="flex justify-center items-end gap-1 border-b-2 border-woodLogo">
+                  <Image src={logo_white} width={120} height={60} alt="Logo" />
                 </ModalHeader>
                 <ModalBody>
-                <Image src="src\assets\6.png" width={100} height={40} alt="Logo" />
+                  <h1 className="text-center text-2xl font-bold">¡🍪 COOKIES 🍪!</h1>
                   <p>
                     Nos importa su privacidad. El uso que hacemos de la
                     información que recopila DeCamino (es decir, nosotros) se
@@ -72,31 +84,33 @@ export const PrivacyPolicy = () => {
                     información detallada.
                   </p>
                   <p>
-                    Cualquier información que no se encuadre en esa descripción,
+                    {`Cualquier información que no se encuadre en esa descripción,
                     deberá ser considerada "información no personal". Si
                     almacenamos sus informaciones personales con informaciones
                     no personales, esta combinación será considerada como
                     "informaciones personales". Si excluimos todas las
                     informaciones personales de un conjunto de datos, los datos
                     restantes deben ser considerados informaciones no
-                    personales.
+                    personales.`}
                   </p>
                 </ModalBody>
-                <ModalFooter>
+                <ModalFooter className="bg-woodLogo ">
+                  <div className="absolute top-[-46px] w-full left-0">
+                    <img className="w-[60px] h-[56px]" src={logo} alt="DeCamino" />
+                  </div>
                   <Button 
-                    
-                    variant="light"
                     onPress={onClose}
                     onClick={handleClose}
+                    className="text-black bg-gray300/85"
                   >
                     No Acepto
                   </Button>
-                  <Button className="bg-freshMint"
-                    
+                  <Button 
+                    className="bg-freshMint font-bold text-white"
                     onPress={onClose}
                     onClick={handleClose}
                   >
-                    <b>Acepto</b>
+                    Acepto
                   </Button>
                 </ModalFooter>
               </>

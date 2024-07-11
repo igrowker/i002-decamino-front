@@ -18,5 +18,3 @@ export const routeSlice = createSlice({
 
 export const { setStartLocation, setEndLocation } = routeSlice.actions;
 
-export default routeSlice.reducer;
-
