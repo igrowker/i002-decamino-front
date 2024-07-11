@@ -1,5 +1,6 @@
-import { Chip } from "@nextui-org/react";
 import React, { useEffect } from "react";
+import { Input, DateInput, Button } from "@nextui-org/react";
+import { CalendarDate } from "@internationalized/date";
 import { useSelector, useDispatch } from "react-redux";
 import {
   MapContainer,
@@ -7,57 +8,77 @@ import {
   Marker,
   CircleMarker,
   Popup,
+  useMapEvents,
 } from "react-leaflet";
 import { setStartLocation, setEndLocation } from "../store/routeSlice";
 import "leaflet/dist/leaflet.css";
+import { MapComponent } from "./MapComponent";
 
 export const RoutePlanner = () => {
   const dispatch = useDispatch();
   const { startLocation, endLocation } = useSelector((state) => state.route);
 
-  // markers
-  const markers = [
-    {
-      geocode: [-37.349213, -59.124641],
-      popUp: "Hello, I am pop up 1",
-    },
-    {
-      geocode: [-37.329219, -59.161377],
-      popUp: "Hello, I am pop up 2",
-    },
-    {
-      geocode: [-37.30205, -59.11314],
-      popUp: "Hello, I am pop up 3",
-    },
-  ];
-
   useEffect(() => {
-    // Simula la obtención de ubicaciones a partir de algún servicio
-    dispatch(setStartLocation([-37.321574, -59.13271]));
-    dispatch(setEndLocation([-37.237982, -59.233475]));
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          dispatch(setStartLocation([latitude, longitude]));
+        },
+        (error) => {
+          console.error("Error obteniendo la ubicación:", error);
+        }
+      );
+    } else {
+      console.error("Geolocalización no disponible");
+    }
   }, [dispatch]);
 
   return (
     <>
-      <MapContainer
-        center={startLocation}
-        zoom={13}
+      <div className=" flex flex-col gap-4 ">
+        <div className="flex  flex-wrap md:flex-nowrap mb-6 md:mb-0 mr-6 ml-5 mt-16 gap-4 ">
+          <Input
+            variant={"bordered"}
+            type="text"
+            label="Primer Destino"
+            labelPlacement={"outside"}
+            placeholder="Ingrese su Destino"
+          />
 
-        // style={{ height: "400px", width: "100%" }}
-      >
+          <Input
+            variant={"bordered"}
+            type="text"
+            label="Segundo Destino"
+            labelPlacement={"outside"}
+            placeholder="Ingrese su Destino"
+          />
+
+          <DateInput
+            label="Día de Llegada"
+            placeholderValue={new CalendarDate(1995, 11, 6)}
+            variant={"bordered"}
+            labelPlacement={"outside"}
+          />
+
+          <DateInput
+            label="Día de Salida "
+            placeholderValue={new CalendarDate(1995, 11, 6)}
+            variant={"bordered"}
+            labelPlacement={"outside"}
+          />
+
+          <Button className="" color="success">Buscar</Button>
+        </div>
+      </div>
+      <MapContainer center={startLocation} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {markers.map((marker, index) => (
-            <Marker 
-            key={index} 
-            position={marker.geocode}
-            onClick={() => dispatch(setStartLocation(marker.geocode))}
-            >   </Marker>
-            ))}
         <CircleMarker center={startLocation} radius={10} />
         <CircleMarker center={endLocation} radius={10} />
+        <MapComponent center={startLocation} />
       </MapContainer>
     </>
   );

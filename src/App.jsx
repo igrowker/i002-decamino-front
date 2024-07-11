@@ -5,7 +5,6 @@ import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { RestaurantDetail } from "./components/RestaurantDetail";
 import { RoutePlanner } from "./components/RoutePlanner";
 
-
 function App() {
   return (
     <>
@@ -61,15 +60,7 @@ function App() {
 
         <Route path="Details" element={<RestaurantDetail />}></Route>
 
-        <Route
-          path="Routes"
-          element={
-            // <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            //   <Chip className="text-white font-bold" color="primary" variant="shadow">RUTAS</Chip>
-            // </main>
-            <RoutePlanner />
-          }
-        ></Route>
+        <Route path="Routes" element={<RoutePlanner />}></Route>
 
         <Route
           path="History"
