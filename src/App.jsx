@@ -1,21 +1,39 @@
-import { Chip } from "@nextui-org/react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Button, Chip } from "@nextui-org/react";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
 import Layout from "./Layout";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./Pages/Login/LoginForm.View";
+import RegisterForm from "./Pages/Register/RegisterForm.View";
+import { Public_Routes } from "./Routes/Public_Routes";
+import { Private_Routes } from "./Routes/Private_Routes";
+import { logout } from "./store/auth.slice";
+import { useDispatch } from "react-redux";
 
 function App() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <>
       <Routes>
-        <Route path="Home" element={<Landing_Page />} />
+        <Route path="Home" element={
+          <Public_Routes>
+            <Landing_Page />
+          </Public_Routes>
+          } />
         <Route path="Profile" element={
-          <Layout>
-            <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-              <Chip className="text-white font-bold" color="danger" variant="shadow">PROFILE</Chip>
-            </main>
-          </Layout>
+          <Private_Routes>
+            <Layout>
+              <main className="w-full h-screen gap-4 bg-gray-800 flex flex-col justify-center items-center">
+                <h1 className="text-white/80 bg-red-600/45 border-2 rounded-lg border-white/65 px-8 py-2 text-lg font-bold">PROFILE</h1>
+                <Button className="text-white font-bold" color="danger" variant="shadow"
+                onClick={()=>{dispatch(logout()); navigate("/Profile")}}
+                >Cerrar Sesión
+                </Button>
+              </main>
+            </Layout>
+          </Private_Routes>
         } />
         <Route path="Payment" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
@@ -62,8 +80,16 @@ function App() {
             <Chip className="text-white font-bold" color="warning" variant="shadow">MENU</Chip>
           </main>
         } />
-        <Route path="Login" element={<LoginForm />} />
-        <Route path="Register" element={<RegisterForm />} />
+        <Route path="Login" element={
+          <Public_Routes>
+            <LoginForm/>
+          </Public_Routes>
+        } />
+        <Route path="Register" element={
+          <Public_Routes>
+            <RegisterForm/>
+          </Public_Routes>
+        } />
         <Route path="Reservations" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
             <Chip className="text-white font-bold" color="secondary" variant="shadow">RESERVASCIONES</Chip>
