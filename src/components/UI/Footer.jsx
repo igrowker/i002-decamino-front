@@ -5,7 +5,7 @@ import { FaFacebook } from "react-icons/fa6";
 
 export const Footer = () => {
   return (
-    <footer className="bg-softWood text-gray-900/70 py-8 px-8 md:px-20 flex flex-col justify-between min-h-[200px]">
+    <footer className="bg-softWood text-gray-900/70 py-8 px-8 md:px-20 flex flex-col justify-between min-h-[200px] z-[100]">
   <div className="flex flex-col sm:flex-row justify-between w-full">
     <div className="hidden sm:block font-bold text-2xl">
       <div className="flex items-center">
@@ -14,7 +14,7 @@ export const Footer = () => {
       </div>
     </div>
     <div className="flex flex-col items-end space-y-2 mt-4 sm:mt-0 sm:ml-auto font-semibold">
-      <a href="#about" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Sobre Nosotros</a>
+      <a href="/Nosotros" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Sobre Nosotros</a>
       <a href="#contact" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Contacto</a>
       <a href="#privacy" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Políticas de privacidad</a>
       <a href="#cookies" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Cookies</a>

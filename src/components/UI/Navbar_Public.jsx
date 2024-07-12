@@ -11,45 +11,57 @@ import {
 import logo from "/logosinFondo.png";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { setActive } from "../../store/navbar.slice";
 
-export const Navbar_Landing_Page = () => {
+export const Navbar_Public = () => {
+
+  const dispatch = useDispatch();
+  const active = useSelector((state)=> state.navbars.navbar_public.active)
+  const location = useLocation()
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  if(!(active == location.pathname)){
+    dispatch(setActive(location.pathname))
+  }
 
   const menuItems = [
     {
       name: "Inicio",
       href: "/Home",
-      isActive: true
+      isActive: (active == "/Home")
     },
     {
       name: "Nosotros",
-      href: "/Home",
-      isActive: false
+      href: "/Nosotros",
+      isActive: (active == "/Nosotros")
     },
     {
       name: "Contacto",
-      href: "/Home",
-      isActive: false
+      href: "/Contact",
+      isActive: (active == "/Contact")
     },
     {
       name: "Mi ruta",
-      href: "/Home",
-      isActive: false
+      href: "/Route",
+      isActive: (active == "/Route")
     },
     {
       name: "Iniciar sesión",
-      href: "/login",
-      isActive: false
+      href: "/Login",
+      isActive: (active == "/Login")
     },
   ];
 
   return (
     <Navbar
       position="static"
-      className="w-full bg-[#0a1200]/90 text-white"
+      className="w-full bg-[#0a1200]/90 text-white z-[9000]"
       onMenuOpenChange={setIsMenuOpen}
+      isMenuOpen={isMenuOpen}
       classNames={{
         item: [
           "flex",
@@ -95,6 +107,7 @@ export const Navbar_Landing_Page = () => {
             <Button
               className="font-nunito text-white bg-greenT md:w-[150px] text-md"
               radius="full"
+              isActive={(active == "/Register")}
             > 
                 Registrarme
             </Button>
@@ -104,7 +117,7 @@ export const Navbar_Landing_Page = () => {
 
       {/* MENU HAMBURGUESA */}
       <NavbarMenu>
-       <Sidebar  />
+        <Sidebar closeMenu={setIsMenuOpen} />
       </NavbarMenu>
       
     </Navbar>

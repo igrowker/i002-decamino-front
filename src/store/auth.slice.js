@@ -1,4 +1,3 @@
-// authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { loadState, saveState } from '../utilities/localStorage.util';
 
@@ -16,7 +15,6 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       saveState("auth", action.payload)
     },
-
     logout: (state) => {
       state.token = '';
       state.user = {};
@@ -25,7 +23,6 @@ export const authSlice = createSlice({
         user: {}
       })
     },
-
     setToken: (state, action) => { 
       state.token = action.payload;
       saveState("auth", {
@@ -33,7 +30,6 @@ export const authSlice = createSlice({
         user: state.user
       })
     },
-
     updateUser: (state, action) => {
       state.user = {
         ...state.user,
@@ -47,8 +43,7 @@ export const authSlice = createSlice({
         }
       })
     },
-
   },
 });
 
-export const { login, logout, setToken,updateUser } = authSlice.actions;
+export const { login, logout, setToken, updateUser } = authSlice.actions;

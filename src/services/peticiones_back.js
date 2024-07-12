@@ -14,7 +14,7 @@ export const axios_Form_Send = async (Info) => {
         data : Info.data
     };
         const response = await axios.request(config)
-        return {resp:response.data}
+        return response.data
     } catch (error) {
         console.log(error)
         return {message : "Error al hacer la peticion", error}
@@ -36,7 +36,7 @@ export const axios_JSON_Send = async (Info) => {
         data : data
     };
         const response = await axios.request(config)
-        return {resp:response.data}
+        return response.data
     } catch (error) {
         console.log(error)
         return {message : "Error al hacer la peticion", error}

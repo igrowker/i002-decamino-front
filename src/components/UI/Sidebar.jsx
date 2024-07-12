@@ -1,35 +1,41 @@
 import { Link } from "react-router-dom";
 import logo from "/logosinFondo.png";
+import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
 
-const menuItems = [
-  {
-    name: "Inicio",
-    href: "/home",
-    isActive: true
-  },
-  {
-    name: "Nosotros",
-    href: "/",
-    isActive: false
-  },
-  {
-    name: "Contacto",
-    href: "/",
-    isActive: false
-  },
-  {
-    name: "Mi ruta",
-    href: "/",
-    isActive: false
-  },
-  {
-    name: "Iniciar sesión",
-    href: "/login",
-    isActive: false
-  },
-];
 
-export const Sidebar = () => {
+export const Sidebar = ({closeMenu}) => {
+  
+  const active = useSelector((state)=> state.navbars.navbar_public.active)
+
+  const menuItems = [
+    {
+      name: "Inicio",
+      href: "/Home",
+      isActive: (active == "/Home")
+    },
+    {
+      name: "Nosotros",
+      href: "/Nosotros",
+      isActive: (active == "/Nosotros")
+    },
+    {
+      name: "Contacto",
+      href: "/Contact",
+      isActive: (active == "/Contact")
+    },
+    {
+      name: "Mi ruta",
+      href: "/Route",
+      isActive: (active == "/Route")
+    },
+    {
+      name: "Iniciar sesión",
+      href: "/Login",
+      isActive: (active == "/Login")
+    },
+  ];
+
   return (
     <div className="flex flex-col justify-between bg-white rounded-b-2xl">
       <div className="px-2 pt-2">
@@ -39,6 +45,7 @@ export const Sidebar = () => {
               <span className="ml-3">
                 <Link
                   to={item.href}
+                  onClick={()=> closeMenu(false)}
                 >
                   {item.name}
                 </Link>
@@ -47,9 +54,11 @@ export const Sidebar = () => {
           ))}
           <li className="flex items-center p-3 text-base font-bold text-white border-t-1 border-woodLogo">
             <Link
-              to="/register"
+              to="/Register"
+              onClick={()=> closeMenu(false)}
+              isActive={(active == "/Register")}
             >
-              <span className="py-1 px-3 bg-freshMint hover:bg-greenT hover:cursor-pointer rounded-full">Registrarme</span>
+              <span className="py-1 px-3 bg-greenT hover:bg-greenT/70 hover:cursor-pointer rounded-full">Registrarme</span>
             </Link>
           </li>
         </ul>
@@ -62,4 +71,8 @@ export const Sidebar = () => {
       </div>
     </div>
   );
+};
+
+Sidebar.propTypes = {
+  closeMenu: PropTypes.any
 };

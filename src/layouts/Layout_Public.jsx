@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import { Footer } from './components/UI/Footer';
-import { Navbar_Landing_Page } from './components/UI/Navbar_Landing_Page';
+import { Footer } from '../components/UI/Footer';
+import { Navbar_Public } from '../components/UI/Navbar_Public';
 
 
-const Layout = ({ children }) => {
+export const Layout_Public = ({ children }) => {
     return (
       <div className="font-nunito">
         {/* Encabezado */}
-        <Navbar_Landing_Page/>
+        <Navbar_Public/>
   
         {/* Contenido principal */}
         {children}
@@ -21,8 +21,6 @@ const Layout = ({ children }) => {
     
 };
 
-  Layout.propTypes = {
+  Layout_Public.propTypes = {
     children: PropTypes.node.isRequired,
   };
-  
-  export default Layout;
