@@ -2,6 +2,7 @@ import logo from "/logosinFondo.png";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa6";
+import {PrivacyPolicy} from "./Modal_PrivacyPolicy"
 
 export const Footer = () => {
   return (
@@ -16,8 +17,9 @@ export const Footer = () => {
     <div className="flex flex-col items-end space-y-2 mt-4 sm:mt-0 sm:ml-auto font-semibold">
       <a href="/Nosotros" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Sobre Nosotros</a>
       <a href="#contact" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Contacto</a>
-      <a href="#privacy" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Políticas de privacidad</a>
-      <a href="#cookies" className="text-base font-nunito hover:underline hover:text-greenT/90" style={{transition:"0.5s"}}>Cookies</a>
+      <PrivacyPolicy lessBottoms={true} acceptedPolicy={()=>{}}>
+        <a  className="text-base font-nunito hover:underline hover:text-greenT/90 hover:cursor-pointer" style={{transition:"0.5s"}}>Políticas de privacidad</a>
+      </PrivacyPolicy>
     </div>
   </div>
   <div className="flex flex-col w-1/2 md-w-full mt-4">

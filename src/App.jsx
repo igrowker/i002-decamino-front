@@ -1,14 +1,19 @@
 import { Button, Chip } from "@nextui-org/react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
+
 import { Layout_Public } from "./layouts/Layout_Public";
-import LoginForm from "./Pages/Login/LoginForm.View";
-import RegisterForm from "./Pages/Register/RegisterForm.View";
 import { Public_Routes } from "./Routes/Public_Routes";
 import { Private_Routes } from "./Routes/Private_Routes";
+
 import { logout } from "./store/auth.slice";
 import { useDispatch } from "react-redux";
+
+import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
+import LoginForm from "./Pages/Login/LoginForm.View";
+import RegisterForm from "./Pages/Register/RegisterForm.View";
 import { AboutUs } from "./Pages/LandingPage/AboutUs_Page.View"
+import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
+import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
 
 function App() {
 
@@ -50,12 +55,6 @@ function App() {
           </main>
         } />
 
-        <Route path="PrivacyPolicy" element={
-          <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-black font-bold" color="default" variant="shadow">PrivacyPolicy</Chip>
-          </main>
-        } />
-
         <Route path="Filter" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
             <Chip className="text-white font-bold" color="secondary" variant="shadow">FILTRO</Chip>
@@ -63,16 +62,10 @@ function App() {
         } />
 
         <Route path="Details" element={
-          <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-black font-bold" color="warning" variant="shadow">DETALLES</Chip>
-          </main>
+          <Route path="Details" element={<RestaurantDetail />}></Route>
         } />
 
-        <Route path="Routes" element={
-          <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-white font-bold" color="primary" variant="shadow">RUTAS</Chip>
-          </main>
-        } />
+        <Route path="Routes" element={<RoutePlanner />}></Route>
 
         <Route path="History" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import fondo_register from '../../assets/Img/bg-login.webp';
 import {RadioGroup, Radio} from "@nextui-org/react";
+import { PrivacyPolicy } from '../../components/UI/Modal_PrivacyPolicy';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ const RegisterForm = () => {
     notRobot: false,
     role: '',
   });
+
+  const [acceptedPolicy, setAcceptedPolicy] = useState(false)
 
   const [loading, setLoading] = useState(false);
 
@@ -38,6 +41,15 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(!acceptedPolicy){
+      Swal.fire({
+        title: 'Politicas de Privacidad',
+        text: 'Debe aceptar los terminos y condiciones',
+        icon: 'info',
+      });
+      return;
+    }
 
     if(!formData.role){
       Swal.fire({
@@ -86,10 +98,11 @@ const RegisterForm = () => {
         }
       });
     } catch (err) {
-      if (err.response && err.response.data && err.response.data.message === 'Usuario ya existe') {
+      console.log(err.response)
+      if (err.response.data.message) {
         Swal.fire({
           title: 'Error',
-          text: 'El usuario o correo electrónico ya está registrado.',
+          text: err.response.data.message,
           icon: 'error',
         });
       } else {
@@ -99,7 +112,6 @@ const RegisterForm = () => {
           icon: 'error',
         });
       }
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -173,7 +185,7 @@ const RegisterForm = () => {
               >Comercio</Radio>
             </RadioGroup>
           </div>
-          <div className="mb-6 flex items-center">
+          <div className="pb-2 flex items-center">
             <input
               type="checkbox"
               name="notRobot"
@@ -185,6 +197,12 @@ const RegisterForm = () => {
               color='#50EDC2'
             />
             <label htmlFor="notRobot" className="ml-2 block text-sm text-gray-900">No soy un robot</label>
+          </div>
+          <div className="mb-6 flex items-center text-sm gap-1">
+            <p>Para registrarse acepta estos</p>
+            <PrivacyPolicy acceptedPolicy={setAcceptedPolicy}>
+              <b className='underline text-greenT hover:cursor-pointer'>terminos y condiciones</b>
+            </PrivacyPolicy>
           </div>
           <button
             type="submit"
