@@ -11,9 +11,10 @@ import { useDispatch } from "react-redux";
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
 import LoginForm from "./Pages/Login/LoginForm.View";
 import RegisterForm from "./Pages/Register/RegisterForm.View";
-import { AboutUs } from "./Pages/LandingPage/AboutUs_Page.View"
+
 import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
 import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
+import { AboutUs } from "./Pages/AboutUsPage/AboutUs_Page.View";
 
 function App() {
 
