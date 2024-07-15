@@ -1,8 +1,11 @@
-import { Marker, Popup, useMapEvents } from "react-leaflet";
-import React, {  useState } from "react";
+import React, { useState } from "react";
+import { Marker, Popup, useMapEvents, useMap } from "react-leaflet";
+
+import "leaflet-routing-machine";
 
 export const MapComponent = ({ center }) => {
   const [position, setPosition] = useState(null);
+
   const map = useMapEvents({
     click() {
       map.locate();
@@ -14,7 +17,7 @@ export const MapComponent = ({ center }) => {
   });
 
   return position === null ? null : (
-    <Marker position={position} >
+    <Marker position={position}>
       <Popup>You are here</Popup>
     </Marker>
   );

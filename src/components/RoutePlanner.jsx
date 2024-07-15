@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useRef} from "react";
 import { Input, DateInput, Button } from "@nextui-org/react";
 import { CalendarDate } from "@internationalized/date";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +13,8 @@ import {
 import { setStartLocation, setEndLocation } from "../store/routeSlice";
 import "leaflet/dist/leaflet.css";
 import { MapComponent } from "./MapComponent";
+import { LeafletRouting } from "./LeafletRuting";
+
 
 export const RoutePlanner = () => {
   const dispatch = useDispatch();
@@ -25,34 +27,28 @@ export const RoutePlanner = () => {
           const { latitude, longitude } = position.coords;
           dispatch(setStartLocation([latitude, longitude]));
         },
+
         (error) => {
           console.error("Error obteniendo la ubicación:", error);
+        },
+        {
+          enableHighAccuracy: true // activa la ubicacion de gps mas precisa
+
         }
       );
     } else {
       console.error("Geolocalización no disponible");
     }
+
   }, [dispatch]);
+
+  
 
   return (
     <>
       <div className=" flex flex-col gap-4 ">
         <div className="flex  flex-wrap md:flex-nowrap mb-6 md:mb-0 mr-6 ml-5 mt-16 gap-4 ">
-          <Input
-            variant={"bordered"}
-            type="text"
-            label="Primer Destino"
-            labelPlacement={"outside"}
-            placeholder="Ingrese su Destino"
-          />
-
-          <Input
-            variant={"bordered"}
-            type="text"
-            label="Segundo Destino"
-            labelPlacement={"outside"}
-            placeholder="Ingrese su Destino"
-          />
+        
 
           <DateInput
             label="Día de Llegada"
@@ -71,15 +67,24 @@ export const RoutePlanner = () => {
           <Button className="" color="success">Buscar</Button>
         </div>
       </div>
-      <MapContainer center={startLocation} zoom={13}>
+      <MapContainer center={startLocation} zoom={13} >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
+        <MapComponent center={startLocation} />
+        <LeafletRouting />
         <CircleMarker center={startLocation} radius={10} />
         <CircleMarker center={endLocation} radius={10} />
-        <MapComponent center={startLocation} />
       </MapContainer>
     </>
   );
 };
+
+
+
+
+
+
+
+
