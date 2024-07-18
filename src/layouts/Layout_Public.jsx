@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Footer } from '../components/UI/Footer';
-import { Navbar_Public } from '../components/UI/Navbar_Public';
+import { Navbar_Public } from '../components/UI/Navbars/Navbar_Public';
 
 
 export const Layout_Public = ({ children }) => {

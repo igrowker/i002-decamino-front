@@ -1,12 +1,9 @@
-import { Button, Chip } from "@nextui-org/react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Chip } from "@nextui-org/react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Layout_Public } from "./layouts/Layout_Public";
 import { Public_Routes } from "./Routes/Public_Routes";
 import { Private_Routes } from "./Routes/Private_Routes";
-
-import { logout } from "./store/auth.slice";
-import { useDispatch } from "react-redux";
 
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
 import LoginForm from "./Pages/Login/LoginForm.View";
@@ -14,11 +11,10 @@ import RegisterForm from "./Pages/Register/RegisterForm.View";
 import { AboutUs } from "./Pages/LandingPage/AboutUs_Page.View"
 import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
 import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
+import { Layout_Private } from "./layouts/Layout_Private";
+import { Profile } from "./Pages/Profile/Profile.View";
 
 function App() {
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -37,15 +33,9 @@ function App() {
 
         <Route path="Profile" element={
           <Private_Routes>
-            <Layout_Public>
-              <main className="w-full h-screen gap-4 bg-gray-800 flex flex-col justify-center items-center">
-                <h1 className="text-white/80 bg-red-600/45 border-2 rounded-lg border-white/65 px-8 py-2 text-lg font-bold">PROFILE</h1>
-                <Button className="text-white font-bold" color="danger" variant="shadow"
-                onClick={()=>{dispatch(logout()); navigate("/Profile")}}
-                >Cerrar Sesión
-                </Button>
-              </main>
-            </Layout_Public>
+            <Layout_Private>
+              <Profile/>
+            </Layout_Private>
           </Private_Routes>
         } />
 

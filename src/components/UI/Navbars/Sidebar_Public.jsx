@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 
 
-export const Sidebar = ({closeMenu}) => {
+export const Sidebar_Public = ({closeMenu}) => {
   
   const active = useSelector((state)=> state.navbars.navbar_public.active)
 
@@ -73,6 +73,6 @@ export const Sidebar = ({closeMenu}) => {
   );
 };
 
-Sidebar.propTypes = {
+Sidebar_Public.propTypes = {
   closeMenu: PropTypes.any
 };

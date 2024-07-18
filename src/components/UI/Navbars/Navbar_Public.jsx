@@ -12,9 +12,9 @@ import logo from "/logosinFondo.png";
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sidebar } from "./Sidebar";
+import { Sidebar_Public } from "./Sidebar_Public";
 import { useDispatch, useSelector } from "react-redux";
-import { setActive } from "../../store/navbar.slice";
+import { setActive } from "../../../store/navbar.slice";
 
 export const Navbar_Public = () => {
 
@@ -117,7 +117,7 @@ export const Navbar_Public = () => {
 
       {/* MENU HAMBURGUESA */}
       <NavbarMenu>
-        <Sidebar closeMenu={setIsMenuOpen} />
+        <Sidebar_Public closeMenu={setIsMenuOpen} />
       </NavbarMenu>
       
     </Navbar>
