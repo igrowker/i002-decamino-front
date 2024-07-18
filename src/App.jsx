@@ -14,6 +14,7 @@ import RegisterForm from "./Pages/Register/RegisterForm.View";
 import { AboutUs } from "./Pages/LandingPage/AboutUs_Page.View"
 import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
 import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
+import { ModalReservations } from "./components/Reservations/ModalReservations";
 
 function App() {
 
@@ -109,7 +110,9 @@ function App() {
 
         <Route path="Reservations" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
+            <ModalReservations>
             <Chip className="text-white font-bold" color="secondary" variant="shadow">RESERVASCIONES</Chip>
+            </ModalReservations>
           </main>
         } />
 
