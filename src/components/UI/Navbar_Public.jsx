@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActive } from "../../store/navbar.slice";
 
 export const Navbar_Public = () => {
-
+  
   const dispatch = useDispatch();
   const active = useSelector((state)=> state.navbars.navbar_public.active)
   const location = useLocation()

@@ -17,10 +17,10 @@ export const Section_HeroLandPage = () => {
 
         <section className="relative px-2 xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3 flex flex-col items-center md:items-start text-center md:text-left">
           <div>
-            <h1 className="text-white font-nunito font-[600] text-[32px] xs:text-[40px] sm:text-[48px] md:text-[40px] lg:text-[48px]">
+            <h1 className="text-white font-nunito font-[600] text-[42px] xs:text-[42px] sm:text-[48px] md:text-[50px] lg:text-[64px]">
               Explora el turismo rural, descubre tu próxima aventura
             </h1>
-            <p className="font-nunito font-[400] text-[16px] sm:text-[20px] md:text-[16px] lg:text-[20px] text-gray-300 mt-5 md:mt-2">
+            <p className="font-nunito font-[400] text-[16px] sm:text-[20px] md:text-[16px] lg:text-[20px] text-gray-300 mt-5 md:mt-2 w-full md:w-2/3">
               Sumérgete en una experiencia única explorando las joyas de los
               pueblos rurales. Planifica tus rutas gastronómicas, apoya a
               pequeños negocios y disfruta de auténticas tradiciones locales.

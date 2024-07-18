@@ -6,7 +6,7 @@ export const Section_Actividades = () => {
   return (
     <main className=" bg-gray100 md:bg-softWood w-full px-2 xl:px-32 lg:px-24 md:px-16 sm:px-8 xs:px-6 2xs:px-3">
       <section className="py-8 ">
-        <h4 className="text-white text-md hidden md:block">DESCUBRIR</h4>
+        <h4 className="text-freshMint md:text-white text-md  text-md ">DESCUBRIR</h4>
         <div className="text-center sm:text-left">
           <h1 className="text-2xl font-bold">Actividades en el camino</h1>
           <p className="text-[#073D37] pt-2 pb-8 font-nunito">
