@@ -61,15 +61,7 @@ const team = [
     linkedIn: "https://www.linkedin.com/in/facundo-sebastian-arce-9699992b8/",
     github: "https://github.com/ArceFacundo2022",
     Image: "https://avatars.githubusercontent.com/u/111534351?v=4"
-  },
-  {
-    name: "Juan Carlos Grijalva Cajamarca",
-    role: "Fullstack",
-    linkedIn: "https://www.linkedin.com/in/juancarlosgrijalva-bb835311/",
-    github: "https://github.com/juancarlosgc",
-    Image: "https://avatars.githubusercontent.com/u/40842198?v=4"
-  },
-  
+  },  
   {
     name: "Jeremias Ianigro",
     role: "Backend",
