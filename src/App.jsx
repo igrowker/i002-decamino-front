@@ -16,6 +16,7 @@ import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.Vie
 import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
 import { AboutUs } from "./Pages/AboutUsPage/AboutUs_Page.View";
 
+
 function App() {
 
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
 
         <Route path="/Nosotros" element={
           <Layout_Public>
-            <AboutUs/>
+            <AboutUs />
           </Layout_Public>
         }/>
 
