@@ -1,78 +1,89 @@
-import React from 'react'
+import React from "react";
 
+import { Link } from "react-router-dom";
+import { Estrellas } from "./UI/Estrellas"
 
 export const RestaurantDetail = () => {
   return (
     <>
+      <div>
+        <div className="flex max-w-sm w-full bg-white shadow-md  mx-auto">
+          <div></div>
 
-<div className="max-w-2xl mx-auto">
+          <div
+            className="w-full rounded-xl relative shadow-lg hover:shadow-2xl movie-item text-black movie-card"
+            data-movie-id="438631"
+          >
+            <div className="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-white via-gray-900 to-transparent"></div>
+            <div
+              className="relative cursor-pointer group z-10 px-10space-y-6 movie_info"
+              data-lity=""
+            >
+              <div className="poster__info align-self-end w-full">
+                <div className="h-40"></div>
+                <h3 className="text-2xl font-semibold  text-white text-center pb-12">
+                  Restaurante
+                </h3>
+                <div className="space-y-6  bg-white rounded-t-xl p-5">
+                  <div className="flex flex-col space-y-2 inner">
+                    <div className="mb-0 text-lg text-gray-900 font-semibold ">
+                      About Restaurante
+                    </div>
+                  </div>
+                  <div className="flex flex-row justify-between datos">
+                    <div className="flex flex-col datos_col">
+                      <div className="popularity"></div>
+                      <div className="text-sm text-gray-400">
+                       <Estrellas/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col datos_col">
+                      <div className="release"></div>
+                    </div>
+                    <div className="flex flex-col datos_col">
+                      <div className="release"></div>
+                      <div className="text-sm text-gray-400">Ver reviews</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col overview">
+                    <div className="flex flex-col"></div>
+                    <div className="text-lg text-gray-900 font-semibold mt-2.5 mb-5">
+                      Menu
+                    </div>
 
-
-	<div className="bg-white shadow-md rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
-		<a href="#">
-			<img className=" w-full rounded-t-lg p-8" src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80" alt="product image"/>
-        </a>
-			<div className="px-5 pb-5">
-				<a href="#">
-					<h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">About Restaurante
-						</h3>
-            <p className="text-gray-900  text-base tracking-tight dark:text-white">
-              Restaurante esta ubicado en medio de paisajes campestres, ofrece un ambiente acogedor y rústico . Sirve platos tradicionales , como asado , empanadas y locro.
-            </p>
-				</a>
-				<div className="flex items-center mt-2.5 mb-5">
-					<svg className="w-5 h-5 text-yellow-700" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg className="w-5 h-5 text-yellow-700" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg className="w-5 h-5 text-yellow-700" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg className="w-5 h-5 text-yellow-700" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg className="w-5 h-5 text-yellow-700" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<span className="  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">4.79 (78 reviews)</span>
-				</div>
-				<div className="flex items-center justify-between mt-2.5 mb-5">
-					<span className="text-xl font-bold text-gray-900 dark:text-white">Menú</span>
-				</div>
-        <div className="flex items-center justify-between mt-2.5   ">
-					<span className="text-xl font-bold text-gray-900 dark:text-white">Asado libre con bebida</span>
-
-				</div>
-          <p className="text-base  text-gray-700 dark:text-white"> Desde $10 por persona</p>
-        <div className="flex items-center justify-between mt-2.5  ">
-					<span className="text-xl font-bold text-gray-900 dark:text-white">Empanadas</span>
-				</div>
-        <p className="text-base  text-gray-700 dark:text-white mb-5"> Desde $10 la docena</p>
-					<a href="/Home"
-						className= "flex items-center flex-col text-white w-full bg-greenT  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Añadir a mi ruta
-						</a>
-			</div>
-	</div>
-</div>
-    
+                    <div className="text-lg text-gray-900 font-semibold mt-2.5 flex items-center justify-between ">
+                      Asado libre con bebida
+                    </div>
+                    <p className="text-xs text-black mb-5">
+                      Desde $10 por persona
+                    </p>
+                    <div className="text-lg text-gray-900 font-semibold mt-2.5 flex items-center justify-between ">
+                      Empanadas
+                    </div>
+                    <p className="text-xs text-black mb-5">
+                      Desde $10 la docena
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img
+              className="absolute inset-0 transform w-full -translate-y-4"
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.geagp26pb91JxbnJ7ydeIQHaKu%26pid%3DApi&f=1&ipt=46bb4f9251a2789985307de852248fca556df7d6893393d37f8d96d1e702ba88&ipo=images"
+            />
+            <div className="bg-white flex flex-row relative pb-10 space-x-4 z-10 ">
+              <a
+                className="flex items-center py-2 px-28 rounded-lg mx-auto h-full text-white bg-greenT hover:bg-freshMint"
+                href="#"
+                target="_blank"
+                data-unsp-sanitized="clean"
+              >
+                <div className="text-sm text-white ml-2">Añadir a mi ruta</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
-    
-  )
-}
+  );
+};
