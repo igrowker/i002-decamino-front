@@ -18,7 +18,7 @@ export const Sidebar_Merchant = ({closeMenu}) => {
     {
         name: "Inicio",
         href: "/Home",
-        isActive: (active == "/Home")
+        isActive: (active == "/Main")
     },
     {
         name: "Perfil",
@@ -26,29 +26,14 @@ export const Sidebar_Merchant = ({closeMenu}) => {
         isActive: (active == "/Profile")
     },
     {
-        name: "Mi comercio",
-        href: "/Route",
-        isActive: (active == "/Route")
-    },
-    {
-        name: "Menu",
-        href: "/Filter",
-        isActive: (active == "/Filter")
-    },
-    {
-        name: "Historial",
-        href: "/History",
-        isActive: (active == "/Favorite")
-    },
-    {
         name: "Notificaciones",
-        href: "/Notifications",
-        isActive: (active == "/Notifications")
+        href: "#",
+        isActive: false
     },
     {
         name:"Configuraciones",
-        href:"/Settings",
-        isActive: (active == "/Settings")
+        href:"#",
+        isActive: false
     },
   ];
 

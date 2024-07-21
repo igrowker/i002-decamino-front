@@ -37,7 +37,7 @@ export const Navbar_Traveler = () => {
     const menuItems = [
       {
           name: "Inicio",
-          href: "/Home",
+          href: "/Main",
           isActive: (active == "/Home")
       },
       {
@@ -46,9 +46,9 @@ export const Navbar_Traveler = () => {
           isActive: (active == "/Profile")
       },
       {
-          name: "Mi ruta",
-          href: "/Route",
-          isActive: (active == "/Route")
+        name: "Nueva ruta",
+        href: "/Routes",
+        isActive: (active == "/Routes")
       },
       {
           name: "Comercios",
@@ -59,24 +59,10 @@ export const Navbar_Traveler = () => {
     
     const DropDownItems = [
         {
-            name: "Favoritos",
-            href: "/Favorite",
-            isActive: (active == "/Favorite")
-        },
-        {
-          name: "Historial",
-          href: "/History",
-          isActive: (active == "/Favorite")
-        },
-        {
-            name: "Notificaciones",
-            href: "/Notifications",
-            isActive: (active == "/Notifications")
+          name: "Notificaciones",
         },
         {
           name:"Configuraciones",
-          href:"/Settings",
-          isActive: (active == "/Settings")
         },
     ]
   
@@ -114,11 +100,11 @@ export const Navbar_Traveler = () => {
           </NavbarBrand>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="min-[875px]:hidden ml-auto"
+            className="sm:hidden ml-auto"
           />
         </NavbarContent>
 
-        <NavbarContent justify="end" className="hidden min-[875px]:flex">
+        <NavbarContent justify="end" className="hidden sm:flex">
           {menuItems.map((item) => (
             <NavbarItem className="px-1" key={item.name} isActive={item.isActive}>
               <Link color="foreground" to={item.href}>
@@ -131,6 +117,7 @@ export const Navbar_Traveler = () => {
           }}>
             <DropdownTrigger>
               <Avatar
+                disableAnimation={false}
                 isBordered
                 as="button"
                 className="transition-transform ring-freshMint"
@@ -142,13 +129,13 @@ export const Navbar_Traveler = () => {
             <DropdownMenu aria-label="Profile Actions" variant="flat" className="text-white"
             >
               {DropDownItems.map((item) => (
-              <DropdownItem className="px-1" key={item.name} isActive={item.isActive}>
-                <Link color="foreground" to={item.href}>
+              <DropdownItem className="px-1" key={item.name} textValue={item.name}>
+                <Link color="foreground">
                     <p className="font-nunito hover:text-greenT">{item.name}</p>
                 </Link>
               </DropdownItem>
               ))}
-              <DropdownItem key="logout" color="danger"
+              <DropdownItem key="logout" color="danger" textValue="Log Out"
                 onClick={()=>{dispatch(logout()); navigate("/Home")}}
               >
                 Cerrar Sesión

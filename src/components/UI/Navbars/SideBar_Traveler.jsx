@@ -17,7 +17,7 @@ export const Sidebar_Traveler = ({closeMenu}) => {
   const menuItems = [
     {
         name: "Inicio",
-        href: "/Home",
+        href: "/Main",
         isActive: (active == "/Home")
     },
     {
@@ -26,8 +26,8 @@ export const Sidebar_Traveler = ({closeMenu}) => {
         isActive: (active == "/Profile")
     },
     {
-        name: "Mi ruta",
-        href: "/Route",
+        name: "Nueva ruta",
+        href: "/Routes",
         isActive: (active == "/Route")
     },
     {
@@ -36,19 +36,14 @@ export const Sidebar_Traveler = ({closeMenu}) => {
         isActive: (active == "/Filter")
     },
     {
-        name: "Favoritos",
-        href: "/Favorite",
-        isActive: (active == "/Favorite")
-    },
-    {
         name: "Notificaciones",
-        href: "/Notifications",
-        isActive: (active == "/Notifications")
+        href: "#",
+        isActive: false
     },
     {
       name:"Configuraciones",
-      href:"/Settings",
-      isActive: (active == "/Settings")
+      href:"#",
+      isActive: false
     },
   ];
 
@@ -57,6 +52,7 @@ export const Sidebar_Traveler = ({closeMenu}) => {
       <div className="px-2 pt-2">
         <div className="pt-1 pb-3 ml-5 flex gap-3 items-center">
           <Avatar
+            disableAnimation={false}
             isBordered
             className="transition-transform ring-freshMint"
             name={user_profile.username}

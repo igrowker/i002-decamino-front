@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import { useDispatch, useSelector} from "react-redux";
 import logo from "/logosinFondo.png";
+import BG_MERCHANT from "../../assets/Img/profile_merchant.webp"
+import BG_TRAVELER from "../../assets/Img/profile_traveler.webp"
 
 import {
     Modal,
@@ -19,6 +21,7 @@ import 'react-image-crop/dist/ReactCrop.css';
 import Swal from 'sweetalert2'
 import { axios_Form_Send, refresh_User } from '../../services/peticiones_back';
 import { updateUser } from '../../store/auth.slice'
+import { Loader } from '../UI/Loader';
 
 
 
@@ -80,7 +83,7 @@ export const Img_Profile = () => {
 
         const resp = await axios_Form_Send({
           data: formData, 
-          method: "post", 
+          method: "put", 
           url: `/api/user/profile-img/upload`, 
           token
         })
@@ -198,18 +201,41 @@ export const Img_Profile = () => {
 
   return (
     <>
-      <div className='w-full h-[164px] flex justify-center items-center relative border-b-2 border-woodLogo p-2'>
-        <Avatar
-            isBordered
-            size="lg"
-            className="transition-transform ring-freshMint w-32 h-32 text-large"
-            name={user_profile.username}
-            src={user_profile.profileImg}
-        />
-        <Button size='md' isIconOnly className="absolute top-[65%] left-[60%] text-lg rounded-full bg-softWood border-2 border-woodLogo" onClick={handleOpenModal}>
-          <IoMdAdd/>
-        </Button>
-      </div>
+      <article className='bg-cyan-400/20 bg-cover rounded-t-xl hidden sm:block' style={{backgroundImage: `url(${user_profile.role == "traveler" ? BG_TRAVELER : BG_MERCHANT})` }}>
+        <div className='w-full h-[164px] flex justify-center items-center relative p-2'>
+          <Avatar
+              isBordered
+              size="lg"
+              className="transition-transform ring-freshMint w-32 h-32 text-large shadow-xl shadow-greenT"
+              name={user_profile.username}
+              src={user_profile.profileImg}
+          />
+          <Button size='md' isIconOnly className="absolute top-[65%] left-[60%] text-lg rounded-full bg-softWood border-2 border-woodLogo" onClick={handleOpenModal}>
+            <IoMdAdd/>
+          </Button>
+        </div>
+        <div className='flex justify-center border-b-2 border-woodLogo px-2 pb-2'>
+          <h2 className='text-center font-semibold text-lg text-black px-4 bg-softWood border-1 border-woodLogo rounded-2xl'>{user_profile.username}</h2>
+        </div>
+      </article>
+
+      <article className='rounded-t-xl block sm:hidden'>
+        <div className='w-full h-[208px] flex justify-center items-center relative p-2 mt-[-108px]'>
+          <Avatar
+              isBordered
+              size="lg"
+              className="transition-transform ring-freshMint w-40 h-40 text-large shadow-xl shadow-greenT"
+              name={user_profile.username}
+              src={user_profile.profileImg}
+          />
+          <Button size='md' isIconOnly className="absolute top-[65%] left-[60%] text-lg rounded-full bg-softWood border-2 border-woodLogo" onClick={handleOpenModal}>
+            <IoMdAdd/>
+          </Button>
+        </div>
+        <div className='flex justify-center px-2 pb-4'>
+          <h2 className='text-center font-semibold text-lg text-black px-4 bg-softWood border-1 border-woodLogo rounded-2xl'>{user_profile.username}</h2>
+        </div>
+      </article>
 
       <Modal
           backdrop="opaque"
@@ -223,7 +249,7 @@ export const Img_Profile = () => {
             backdrop: "bg-gradient-to-br from-[#94B9FF]/75 to-[#CDFFD8]/75 backdrop-opacity-10",
             base: "",
             header: "flex justify-center",
-            body:"gap-2 pb-[52px]",
+            body:"gap-2 pb-[52px] relative",
             footer:"bg-woodLogo relative"
           }}
         >
@@ -280,6 +306,9 @@ export const Img_Profile = () => {
                       )}
                     </div>
                   </section>
+                  <div className='absolute bottom-[8px] right-[8px]'>
+                    <Loader classNames={"size-[4rem] before:size-[2rem] z-10"} hidden={loading}/>
+                  </div>
                 </ModalBody>
                 <ModalFooter>
                   <div className="absolute top-[-46px] w-full left-0">
