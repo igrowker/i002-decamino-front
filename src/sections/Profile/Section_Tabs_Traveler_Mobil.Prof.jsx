@@ -3,6 +3,7 @@ import BG_MERCHANT from "../../assets/Img/profile_merchant.webp"
 import BG_TRAVELER from "../../assets/Img/profile_traveler.webp"
 import { useSelector } from "react-redux";
 import { Edit_profile } from "../../components/Profile/Edit_profile.Prof";
+import { Img_Profile } from "../../components/Profile/Img_Profile.Prof";
 
 export const Section_Tabs_Traveler_Mobil = () => {
 
@@ -12,7 +13,8 @@ export const Section_Tabs_Traveler_Mobil = () => {
     <>
         <div className="block sm:hidden w-full h-[280px] bg-cover mb-[-74px]" style={{backgroundImage: `url(${user_profile.role == "traveler" ? BG_TRAVELER : BG_MERCHANT})`}}></div>
         <section className="block sm:hidden xs:px-6 2xs:px-3 px-2 w-[100%] min-h-screen border-x-2 border-t-2 border-woodLogo/45 bg-gray100 z-10 rounded-t-3xl">
-          <Tabs radius="full" color="primary" aria-label="Componente Tabs"
+          <Img_Profile/>
+          <Tabs radius="full" aria-label="Componente Tabs"
             classNames={{
               base:"flex w-full justify-center font-semibold",
               tabList: "bg-greenT"
@@ -46,7 +48,7 @@ export const Section_Tabs_Traveler_Mobil = () => {
             </Tab>
           </Tabs>
 
-          <Tabs radius="full" color="primary" aria-label="Componente Tabs"
+          <Tabs radius="full" aria-label="Componente Tabs"
             classNames={{
               base:"block xs:hidden flex flex-wrap w-full justify-center font-semibold",
               panel: "block xs:hidden",
