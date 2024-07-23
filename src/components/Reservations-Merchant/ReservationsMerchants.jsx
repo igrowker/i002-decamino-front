@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ReservationsSlider } from "./ReservationsSlider";
 import { axios_JSON_Send } from "../../services/peticiones_back";
 import { CircularProgress} from "@nextui-org/react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 
@@ -15,7 +15,7 @@ export const ReservationsMerchants = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // const { token } = useSelector((state) => state.authLogin);
+  const { token } = useSelector((state) => state.authLogin);
 
   const fetchReservationData = async () => {
     
@@ -26,7 +26,7 @@ export const ReservationsMerchants = () => {
       const response = await axios_JSON_Send({
         method: "get",
         url: `/api/reservations/restaurant`,
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWM0MWFmZmRkNGNhNzJmMjgyZDVkMyIsInVzZXJuYW1lIjoiTGEgQ29sb25pYWwiLCJlbWFpbCI6ImNvbG9uaWFsQGdtYWlsLmNvbSIsInR3b0ZhY3RvckVuYWJsZWQiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJwcm9maWxlSW1nIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHc3bnZranh4L2ltYWdlL3VwbG9hZC92MTcxNzU0MTU1MS9FbXBsZW9zLUZvcm1vc2EvUHJvZmlsZS1JTUcvVDEwX2Fqa2R0Yi5wbmciLCJoaXN0b3J5IjpbXSwiaWF0IjoxNzIxNTE2NDg0LCJleHAiOjE3MjIxMjEyODR9.A8aWW5_cv92SRMuL_KwHHl52JukntEB7Jw_bp1x97KA",
+        token: token,
       });
       setReservationsData(response);
       const today = new Date();
@@ -64,7 +64,7 @@ export const ReservationsMerchants = () => {
         data:{status : "cancelada"},
         method: "put",
         url: `/api/reservations/${id}`,
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWM0MWFmZmRkNGNhNzJmMjgyZDVkMyIsInVzZXJuYW1lIjoiTGEgQ29sb25pYWwiLCJlbWFpbCI6ImNvbG9uaWFsQGdtYWlsLmNvbSIsInR3b0ZhY3RvckVuYWJsZWQiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJwcm9maWxlSW1nIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHc3bnZranh4L2ltYWdlL3VwbG9hZC92MTcxNzU0MTU1MS9FbXBsZW9zLUZvcm1vc2EvUHJvZmlsZS1JTUcvVDEwX2Fqa2R0Yi5wbmciLCJoaXN0b3J5IjpbXSwiaWF0IjoxNzIxNTE2NDg0LCJleHAiOjE3MjIxMjEyODR9.A8aWW5_cv92SRMuL_KwHHl52JukntEB7Jw_bp1x97KA",
+        token:token,
       });
       fetchReservationData();
     } catch (error) {
@@ -78,7 +78,7 @@ export const ReservationsMerchants = () => {
         data:{status : "confirmada"},
         method: "put",
         url: `/api/reservations/${id}`,
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWM0MWFmZmRkNGNhNzJmMjgyZDVkMyIsInVzZXJuYW1lIjoiTGEgQ29sb25pYWwiLCJlbWFpbCI6ImNvbG9uaWFsQGdtYWlsLmNvbSIsInR3b0ZhY3RvckVuYWJsZWQiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJwcm9maWxlSW1nIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHc3bnZranh4L2ltYWdlL3VwbG9hZC92MTcxNzU0MTU1MS9FbXBsZW9zLUZvcm1vc2EvUHJvZmlsZS1JTUcvVDEwX2Fqa2R0Yi5wbmciLCJoaXN0b3J5IjpbXSwiaWF0IjoxNzIxNTE2NDg0LCJleHAiOjE3MjIxMjEyODR9.A8aWW5_cv92SRMuL_KwHHl52JukntEB7Jw_bp1x97KA",
+        token: token,
       });
       fetchReservationData();
     } catch (error) {
