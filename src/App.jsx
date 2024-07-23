@@ -14,7 +14,8 @@ import RegisterForm from "./Pages/Register/RegisterForm.View";
 
 import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
 import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
-import { AboutUs } from "./Pages/AboutUsPage/AboutUs_Page.View";
+// import { AboutUs } from "./Pages/AboutUsPage/AboutUs_Page.View";
+import { ReservationsMerchants } from "./components/Reservations-Merchant/ReservationsMerchants";
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
 
         <Route path="/Nosotros" element={
           <Layout_Public>
-            <AboutUs/>
+            <ReservationsMerchants />
           </Layout_Public>
         }/>
 
