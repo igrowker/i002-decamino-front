@@ -1,12 +1,13 @@
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
+import { ReservationsMerchants } from "../../components/Reservations-Merchant/ReservationsMerchants";
 
 export const Section_Tabs_Merchant = () => {
-  return (
-        <section className="hidden sm:block w-[100%] min-h-screen border-x-2 border-t-2 border-woodLogo/45 bg-gray100 z-10 rounded-t-xl pt-2">
+  return ( 
+        <section className="hidden sm:block max-w-[65%] min-h-screen border-x-2 border-t-2 border-woodLogo/45 bg-gray100 z-10 rounded-t-xl pt-2 ">
             <Tabs radius="full" aria-label="Componente Tabs"
                 classNames={{
                 base:"flex w-full justify-center font-semibold",
-                tabList: "bg-greenT"
+                tabList: "bg-T"
                 }}
             >
                 <Tab key="Restaurant" title="Mi Restaurante">
@@ -23,12 +24,12 @@ export const Section_Tabs_Merchant = () => {
                         </CardBody>
                     </Card>  
                 </Tab>
-                <Tab key="Reservaciones" title="Reservaciones">
-                    <Card>
-                        <CardBody>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </CardBody>
-                    </Card>  
+                <Tab  key="Reservaciones" title="Reservaciones">
+                    
+                    
+                    <ReservationsMerchants/>
+                    
+                   
                 </Tab>
             </Tabs>
         </section>
