@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import PropTypes from "prop-types";
 
@@ -16,7 +17,7 @@ const formatDateTime = (isoString) => {
 
 const getStatusColor = (status) => {
   switch (status) {
-    case "aceptada":
+    case "confirmada":
       return "bg-green-500";
     case "pendiente":
       return "bg-yellow-500";
@@ -28,17 +29,22 @@ const getStatusColor = (status) => {
 };
 
 export const CardReservation = ({ reservation, cancelReservation }) => {
+  const navigate = useNavigate();
   const formattedDateTime = formatDateTime(reservation.date);
   const statusColor = getStatusColor(reservation.status);
+
+  const handlePayClick = () => {
+    navigate(`/Payment/${reservation._id}`);
+  };
 
   return (
     <div className="bg-#DECBB5 p-2 md:p-4 rounded-lg shadow-lg">
       <div className="flex justify-between">
-      <h2 className="text-2xl font-bold mb-2 flex justify-center">
-        {reservation.restaurant}
-      </h2>
+        <h2 className="text-2xl font-bold mb-2 flex justify-center">
+          {reservation._id}
+        </h2>
 
-      <div className={`ml-auto ${reservation.status === 'cancelada' && "hidden"}`}>
+        <div className={`ml-auto ${reservation.status === 'cancelada' && "hidden"}`}>
           <Button
             onClick={() => cancelReservation(reservation._id)}
             isIconOnly
@@ -46,12 +52,10 @@ export const CardReservation = ({ reservation, cancelReservation }) => {
             aria-label="Eliminar"
             size="sm"
           >
-             <MdCancel  size={24} />
-              
-          
+            <MdCancel size={24} />
           </Button>
         </div>
-        </div>
+      </div>
 
       <div className="flex mb-4">
         <div>
@@ -72,9 +76,15 @@ export const CardReservation = ({ reservation, cancelReservation }) => {
             Reservado para el día: <span>{formattedDateTime}</span>
           </p>
         </div>
-
-        
       </div>
+
+      {reservation.status === "confirmada" && (
+        <div className="flex justify-end mt-4">
+          <Button color="primary" size="sm" onClick={handlePayClick}>
+            Pagar
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
@@ -92,5 +102,4 @@ CardReservation.propTypes = {
     _id: PropTypes.string.isRequired,
   }).isRequired,
   cancelReservation: PropTypes.func.isRequired,
-  
 };
