@@ -43,7 +43,7 @@ export const ReservationsSlider = function ({
             spaceBetween: 8,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 8,
           },
           1024: {
