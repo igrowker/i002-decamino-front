@@ -16,7 +16,7 @@ const formatDateTime = (isoString) => {
 
 const getStatusColor = (status) => {
   switch (status) {
-    case "aceptada":
+    case "confirmada":
       return "bg-green-500";
     case "pendiente":
       return "bg-yellow-500";
@@ -32,13 +32,17 @@ export const CardReservation = ({ reservation, cancelReservation }) => {
   const statusColor = getStatusColor(reservation.status);
 
   return (
-    <div className="bg-#DECBB5 p-2 md:p-4 rounded-lg shadow-lg">
+    <div className="bg-white px-2 py-1 md:p-4 rounded-lg shadow-lg">
       <div className="flex justify-between">
-      <h2 className="text-2xl font-bold mb-2 flex justify-center">
-        {reservation.restaurant}
-      </h2>
+        <h2 className="text-base md:text-lg font-bold mb-2 flex justify-center">
+          {reservation.restaurant}
+        </h2>
 
-      <div className={`ml-auto ${reservation.status === 'cancelada' && "hidden"}`}>
+        <div
+          className={`ml-auto ${
+            reservation.status === "cancelada" && "hidden"
+          }`}
+        >
           <Button
             onClick={() => cancelReservation(reservation._id)}
             isIconOnly
@@ -46,12 +50,10 @@ export const CardReservation = ({ reservation, cancelReservation }) => {
             aria-label="Eliminar"
             size="sm"
           >
-             <MdCancel  size={24} />
-              
-          
+            <MdCancel size={24} />
           </Button>
         </div>
-        </div>
+      </div>
 
       <div className="flex mb-4">
         <div>
@@ -68,12 +70,10 @@ export const CardReservation = ({ reservation, cancelReservation }) => {
                 reservation.status.slice(1)}
             </span>
           </p>
-          <p>
+          <p className="text-sm md:text-base font-semibold">
             Reservado para el día: <span>{formattedDateTime}</span>
           </p>
         </div>
-
-        
       </div>
     </div>
   );
@@ -92,5 +92,4 @@ CardReservation.propTypes = {
     _id: PropTypes.string.isRequired,
   }).isRequired,
   cancelReservation: PropTypes.func.isRequired,
-  
 };
