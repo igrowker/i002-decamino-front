@@ -2,11 +2,13 @@ import { Button, Input } from "@nextui-org/react"
 import { useDispatch, useSelector } from "react-redux";
 
 import Swal from 'sweetalert2'
+
 import { MdEdit } from "react-icons/md";
 import { IoLockClosed } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa6";
 import { FaUserAstronaut } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+
 import { useState } from "react";
 import { axios_JSON_Send, refresh_User } from "../../services/peticiones_back";
 import { updateUser } from "../../store/auth.slice";
@@ -159,7 +161,7 @@ return (
                     Guardar
                 </Button>
                 <div className="absolute bottom-[-10px] right-0">
-                    <Loader classNames={"size-[3rem] before:size-[1.5rem]"} hidden={!loading} size={4}/>
+                    <Loader classNames={"size-[3rem] before:size-[1.5rem]"} hidden={!loading}/>
                 </div>
             </div>
         </form>

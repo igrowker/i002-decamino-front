@@ -4,6 +4,7 @@ import BG_TRAVELER from "../../assets/Img/profile_traveler.webp"
 import { useSelector } from "react-redux";
 import { Edit_profile } from "../../components/Profile/Edit_profile.Prof";
 import { Img_Profile } from "../../components/Profile/Img_Profile.Prof";
+import { MyCommerce } from "../../components/Profile/MyCommerce.Prof";
 
 export const Section_Tabs_Merchant_Mobil = () => {
 
@@ -25,11 +26,9 @@ export const Section_Tabs_Merchant_Mobil = () => {
                 <Edit_profile/>
               </Card>  
             </Tab>
-            <Tab key="Restaurant" title="Mi Restaurante">
+            <Tab key="Commerce" title="Mi Comercio">
               <Card>
-                <CardBody>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </CardBody>
+                <MyCommerce/>
               </Card>  
             </Tab>
             <Tab className="hidden xs:block" key="Menu" title="Menu">
@@ -39,7 +38,7 @@ export const Section_Tabs_Merchant_Mobil = () => {
                 </CardBody>
               </Card>  
             </Tab>
-            <Tab className="hidden xs:block" key="Reservaciones" title="Reservaciones">
+            <Tab className="hidden xs:block" key="Reservations" title="Reservaciones">
               <Card>
                 <CardBody>
                   Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -55,7 +54,7 @@ export const Section_Tabs_Merchant_Mobil = () => {
               tabList: "bg-greenT"
             }}
           >
-            <Tab key="Reservaciones" title="Reservaciones">
+            <Tab key="Reservations" title="Reservaciones">
               <Card>
                 <CardBody>
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
