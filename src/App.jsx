@@ -10,17 +10,17 @@ import LoginForm from "./Pages/Login/LoginForm.View";
 import RegisterForm from "./Pages/Register/RegisterForm.View";
 
 import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
-import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
+
 import { Layout_Private } from "./layouts/Layout_Private";
 import { Profile } from "./Pages/Profile/Profile.View";
 import { AboutUs } from "./Pages/AboutUsPage/AboutUs_Page.View";
+import { RoutePlanner } from "./components/RoutePlanner";
 
 
 
 
 
 function App() {
-
   return (
     <>
       <Routes>
@@ -60,7 +60,16 @@ function App() {
           <Route path="Details" element={<RestaurantDetail />}></Route>
         } />
 
-        <Route path="Routes" element={<RoutePlanner />}></Route>
+        <Route path="Routes" element={
+          <Private_Routes>
+            <Layout_Private>
+              <RoutePlanner/>
+            </Layout_Private>
+          </Private_Routes>
+          
+        }>
+
+        </Route>
 
         <Route path="History" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">

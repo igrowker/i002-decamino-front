@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 .leaflet-container {
-    height: 90vh;
-    width: 90%;
+    height: 80vh;
+    width: 100%;
    display: flex;
    justify-content: center;
    align-items: center;
-   margin : 5%
+    position:relative
   }
 
   .cluster-icon {
