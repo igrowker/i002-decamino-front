@@ -1,14 +1,40 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { Section_Tabs_Traveler } from "../../sections/Profile/Section_Tabs_Traveler.Prof"
 import { Section_Tabs_Traveler_Mobil } from "../../sections/Profile/Section_Tabs_Traveler_Mobil.Prof"
 import { Section_MyInformation } from "../../sections/Profile/Section_MyInformation.Prof"
 import { Section_Tabs_Merchant } from "../../sections/Profile/Section_Tabs_Merchant.Prof"
 import { Section_Tabs_Merchant_Mobil } from "../../sections/Profile/Section_Tabs_Merchant_Mobil.Prof"
+import { useEffect } from "react"
+import { axios_JSON_Send } from "../../services/peticiones_back"
+import { setCommerce } from "../../store/commerce.slice"
 
 export const Profile = () => {
 
   const user_profile = useSelector((state) => state.authLogin.user)
+  const token = useSelector((state) => state.authLogin.token)
+
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    const getCommerce = async () =>{
+
+      const resp = await axios_JSON_Send({
+        data: {},
+        url: `/api/restaurants/${user_profile.restaurant}`,
+        method: "get",
+        token
+      })
+
+      dispatch(setCommerce(resp))
+
+    }
+
+    if(user_profile.role == "merchant"){
+      getCommerce()
+    }
+
+  },[])
 
   if(user_profile.role == "traveler"){
 

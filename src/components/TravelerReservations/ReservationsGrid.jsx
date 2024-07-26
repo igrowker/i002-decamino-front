@@ -1,14 +1,17 @@
-import { CardReservation } from "./CardReservation";
+import { ReservationsSliderTraveler } from "./CardReservation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { axios_JSON_Send } from "../../services/peticiones_back";
-import { CircularProgress } from "@nextui-org/react";
+import { Loader } from "../UI/Loader";
 import Swal from "sweetalert2";
 
 
 
 export const ReservationsGrid = () => {
   const [reservationsData, setReservationsData] = useState([]);
+  const [actives, setActives] = useState([])
+  const [finished, setFinished] = useState([])
+  const [cancelled, setCancelled] = useState([])
   const [loading, setLoading] = useState(false);
 
   const { token } = useSelector((state) => state.authLogin);
@@ -22,7 +25,7 @@ export const ReservationsGrid = () => {
         token: token,
       });
       
-       
+    /*
     const sortedReservations = response.sort((a, b) => {
       const order = { aceptada: 1, pendiente: 2, cancelada: 3 };
 
@@ -35,9 +38,30 @@ export const ReservationsGrid = () => {
       const dateB = new Date(b.date);
       return dateA - dateB;
     });
+    */
+      setReservationsData(response);
+      
+      const today = new Date();
+
+      const actives = response.filter((reserv) => {
+        const reservationDate = new Date(reserv.date);
+        return (reserv.status === "confirmada" || reserv.status === "pendiente") && reservationDate >= today;
+      });
+
+      const finished = response.filter((reserv) => {
+        const reservationDate = new Date(reserv.date);
+        return reservationDate < today;
+      });
+
+      const cancelled = response.filter((reserv) => {
+        const reservationDate = new Date(reserv.date);
+        return reserv.status === "cancelada" && reservationDate >= today;
+      });
+
+      setActives(actives);
+      setCancelled(cancelled);
+      setFinished(finished);
   
-    
-      setReservationsData(sortedReservations);
       setLoading(false);
       
     } catch (error) {
@@ -87,7 +111,7 @@ export const ReservationsGrid = () => {
 
   if (reservationsData.length === 0 && loading === false) {
     return (
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center items-center h-[240px] bg-[#fff] rounded-3xl">
         <h1 className="text-2xl">No ha hecho reservas todavía</h1>
       </div>
     );
@@ -95,19 +119,27 @@ export const ReservationsGrid = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center mt-10">
-        <CircularProgress color="success" aria-label="Loading..."/>
+      <div className="flex justify-center items-center h-[240px] bg-[#fff] rounded-3xl">
+        <Loader hidden={false} classNames={"size-[5rem] before:size-[2.5rem]"}/>
       </div>
     );
   }
 
   return (
-    <div className="flex justify-center p-4 ">
-      <div className="grid gap-4 w-full max-w-screen-md">
-        {reservationsData.map((reserv) => (
-          <CardReservation key={reserv._id}  reservation={reserv} cancelReservation={cancelReservation}   />
-        ))}
-      </div>
+
+
+    <div  className=" flex flex-col justify-center bg-[#fff] rounded-3xl">
+      <h3 className="text-xl text-center bg-greenT py-1 text-white font-semibold rounded-t-3xl">Activas</h3>
+      <ReservationsSliderTraveler reservationsData={actives} cancelReservation={cancelReservation}/>
+      <h3 className="text-xl text-center bg-greenT py-1 text-white font-semibold">
+        Terminadas
+      </h3>
+      <ReservationsSliderTraveler reservationsData={finished} cancelReservation={cancelReservation}   />
+      <h3 className="text-xl text-center bg-greenT py-1 text-white font-semibold">
+        Canceladas
+      </h3>
+      <ReservationsSliderTraveler reservationsData={cancelled} cancelReservation={cancelReservation}   />
+      <div className="h-[36px] bg-greenT rounded-b-3xl"></div>
     </div>
   );
 };

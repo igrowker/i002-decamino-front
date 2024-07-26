@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Edit_profile } from "../../components/Profile/Edit_profile.Prof";
 import { Img_Profile } from "../../components/Profile/Img_Profile.Prof";
 import { ReservationsMerchants } from "../../components/Reservations-Merchant/ReservationsMerchants";
+import { MyCommerce } from "../../components/Profile/MyCommerce.Prof";
 
 export const Section_Tabs_Merchant_Mobil = () => {
 
@@ -26,11 +27,9 @@ export const Section_Tabs_Merchant_Mobil = () => {
                 <Edit_profile/>
               </Card>  
             </Tab>
-            <Tab key="Restaurant" title="Mi Restaurante">
+            <Tab key="Commerce" title="Mi Comercio">
               <Card>
-                <CardBody>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </CardBody>
+                <MyCommerce/>
               </Card>  
             </Tab>
             <Tab className="hidden xs:block" key="Menu" title="Menu">

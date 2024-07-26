@@ -3,7 +3,7 @@ import { ReservationsGrid } from "../../components/TravelerReservations/Reservat
 
 export const Section_Tabs_Traveler = () => {
   return (
-        <section className="hidden sm:block w-[100%] min-h-screen border-x-2 border-t-2 border-woodLogo/45 bg-gray100 z-10 rounded-t-xl pt-2">
+        <section className="hidden sm:block w-full max-w-full overflow-hidden min-h-screen border-x-2 border-t-2 border-woodLogo/45 bg-gray100 z-10 rounded-t-xl pt-2">
             <Tabs radius="full" aria-label="Componente Tabs"
                 classNames={{
                 base:"flex w-full justify-center font-semibold",

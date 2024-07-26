@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ReservationsSlider } from "./ReservationsSlider";
 import { axios_JSON_Send } from "../../services/peticiones_back";
-import { CircularProgress} from "@nextui-org/react";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { Loader } from "../UI/Loader";
 
 
 
@@ -19,16 +19,11 @@ export const ReservationsMerchants = () => {
 
   const { token } = useSelector((state) => state.authLogin);
 
-  
-  
-
   const fetchReservationData = async () => {
     
     try {
 
       setLoading(true);
-
-      
 
       const response = await axios_JSON_Send({
         method: "get",
@@ -148,7 +143,7 @@ export const ReservationsMerchants = () => {
 
   if (reservationsData.length === 0 && loading === false) {
     return (
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center items-center h-[240px] bg-[#fff] rounded-3xl">
         <h1 className="text-2xl">No hay reservas realizadas</h1>
       </div>
     );
@@ -156,28 +151,25 @@ export const ReservationsMerchants = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center mt-10">
-        <CircularProgress color="success" aria-label="Loading..."/>
+      <div className="flex justify-center items-center h-[240px] bg-[#fff] rounded-3xl">
+        <Loader hidden={false} classNames={"size-[5rem] before:size-[2.5rem]"}/>
       </div>
     );
   }
 
   return (
-    <div  className=" flex flex-col justify-center p-2 ">
-      <h2 className="text-2xl flex justify-center">Reservaciones</h2>
-
-      <h3 className="text-xl flex justify-center md:justify-start">Activas</h3>
+    <div  className=" flex flex-col justify-center bg-[#fff] rounded-3xl">
+      <h3 className="text-xl text-center bg-greenT py-1 text-white font-semibold rounded-t-3xl">Activas</h3>
       <ReservationsSlider reservationsData={actives} confirmReservation={confirmReservation} cancelReservation={cancelReservation} />
-      <div className="my-1 border-t-2 border-gray-300 border-dashed"></div>
-      <h3 className="text-xl flex justify-center md:justify-start">
+      <h3 className="text-xl text-center bg-greenT py-1 text-white font-semibold">
         Terminadas
       </h3>
       <ReservationsSlider reservationsData={finished}  />
-      <div className="my-1 border-t-2 border-gray-300 border-dashed"></div>
-      <h3 className="text-xl flex justify-center md:justify-start">
+      <h3 className="text-xl text-center bg-greenT py-1 text-white font-semibold">
         Canceladas
       </h3>
       <ReservationsSlider reservationsData={cancelled}  />
+      <div className="h-[36px] bg-greenT rounded-b-3xl"></div>
     </div>
   );
 };

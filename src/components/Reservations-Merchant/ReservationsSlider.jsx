@@ -55,7 +55,7 @@ export const ReservationsSlider = function ({
         loop={true}
       >
         {reservationsData.map((reserv) => (
-          <SwiperSlide key={reserv._id} className="relative text-center">
+          <SwiperSlide key={reserv.id} className="relative text-center">
             <div className="max-w-sm rounded overflow-hidden shadow-lg p-2 ">
               <div className="px-6 py-4">
                 <div className="font-bold  mb-2 text-sm md:text-base">
@@ -63,9 +63,6 @@ export const ReservationsSlider = function ({
                 </div>
                 <p className="text-gray-700 text-sm md:text-base">
                   Personas: {reserv.numberOfPeople}
-                </p>
-                <p className="text-gray-700  text-sm md:text-base">
-                  Reservó:{reserv._id.slice(0, 15)}
                 </p>
               </div>
               <div className="px-6 pt-4 pb-2 flex flex-col justify-end space-x-2">
