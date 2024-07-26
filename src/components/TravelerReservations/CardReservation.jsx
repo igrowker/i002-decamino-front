@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../Reservations-Merchant/slider.css";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "@nextui-org/react";
 
@@ -82,8 +83,13 @@ export const ReservationsSliderTraveler = function ({
 };
 
 export const CardReservation = ({ reservation, cancelReservation }) => {
+  const navigate = useNavigate();
   const formattedDateTime = formatDateTime(reservation.date);
   const statusColor = getStatusColor(reservation.status);
+
+  const handlePayClick = () => {
+    navigate(`/Payment/${reservation.id}`);
+  };
 
   return (
     <div className="bg-white px-2 py-1 md:p-4 rounded-lg shadow-lg max-w-sm overflow-hidden">
@@ -129,6 +135,14 @@ export const CardReservation = ({ reservation, cancelReservation }) => {
           </p>
         </div>
       </div>
+
+      {reservation.status === "confirmada" && (
+        <div className="flex justify-end mt-4">
+          <Button color="primary" size="sm" onClick={handlePayClick}>
+            Pagar
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
@@ -144,6 +158,7 @@ CardReservation.propTypes = {
     user: PropTypes.string.isRequired,
     __v: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    restaurantId: PropTypes.string.isRequired
   }).isRequired,
   cancelReservation: PropTypes.func.isRequired,
 };

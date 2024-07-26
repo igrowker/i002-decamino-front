@@ -10,6 +10,7 @@ import LoginForm from "./Pages/Login/LoginForm.View";
 import RegisterForm from "./Pages/Register/RegisterForm.View";
 
 import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
+import PaymentForm from "./Pages/Payment/PaymentForm.View"; 
 
 import { Layout_Private } from "./layouts/Layout_Private";
 import { Profile } from "./Pages/Profile/Profile.View";
@@ -39,15 +40,17 @@ function App() {
         <Route path="Profile" element={
           <Private_Routes>
             <Layout_Private>
-              <Profile/>
+              <Profile />
             </Layout_Private>
           </Private_Routes>
         } />
 
-        <Route path="Payment" element={
-          <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-white font-bold" color="success" variant="shadow">PAYMENT</Chip>
-          </main>
+        <Route path="Payment/:id" element={
+          <Private_Routes>
+            <Layout_Private>
+              <PaymentForm />
+            </Layout_Private>
+          </Private_Routes>
         } />
 
         <Route path="Filter" element={
@@ -56,9 +59,7 @@ function App() {
           </main>
         } />
 
-        <Route path="Details" element={
-          <Route path="Details" element={<RestaurantDetail />}></Route>
-        } />
+        <Route path="Details" element={<RestaurantDetail />} />
 
         <Route path="Routes" element={
           <Private_Routes>
@@ -98,7 +99,7 @@ function App() {
         <Route path="Login" element={
           <Public_Routes>
             <Layout_Public>
-              <LoginForm/>
+              <LoginForm />
             </Layout_Public>
           </Public_Routes>
         } />
@@ -106,14 +107,14 @@ function App() {
         <Route path="Register" element={
           <Public_Routes>
             <Layout_Public>
-              <RegisterForm/>
+              <RegisterForm />
             </Layout_Public>
           </Public_Routes>
         } />
 
         <Route path="Reservations" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-white font-bold" color="secondary" variant="shadow">RESERVASCIONES</Chip>
+            <Chip className="text-white font-bold" color="secondary" variant="shadow">RESERVACIONES</Chip>
           </main>
         } />
 
