@@ -30,6 +30,7 @@ export const LeafletRouting = ({ onReceiveWaypoints, onRouteFound }) => {
       fitSelectedRoutes: true,
       showAlternatives: true,
       geocoder: L.Control.Geocoder.nominatim(),
+      
     }).addTo(map);
 
     controlRef.current = routingControl;
