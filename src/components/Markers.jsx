@@ -1,10 +1,14 @@
 
-import React, { useState , useEffect} from "react";
-import { Marker, Popup, useMapEvents } from "react-leaflet";
+import { useState , useEffect} from "react";
+import { Marker, Popup } from "react-leaflet";
 import axios from "axios";
 import { Icon } from "leaflet";
+
+import { ModalRestaurant } from "./ModalRestaurant";
+
 export const Markers = () => {
   const [markers, setMarkers] = useState([]);
+
   useEffect(() => {
     const dataMarkers = `https://decamino-back.onrender.com/api/restaurants`;
     axios
@@ -28,10 +32,21 @@ export const Markers = () => {
   return (
     <>
        {markers.map((marker  , id) => (
+        <> 
+        
         <Marker  key={id} position={marker.location} icon={customIcon}>
-          <Popup position={marker.location}>{marker.title }</Popup>
+          <Popup position={marker.location}>
+            <div className="flex flex-col justify-center items-center">
+              <h2 className="font-semibold text-gray-800 py-1">
+                {marker.title}
+              </h2>
+              <ModalRestaurant marker={marker}/>
+            </div>
+          </Popup>
         </Marker>
+        </>
       ))}
+
     </>
   );
 };

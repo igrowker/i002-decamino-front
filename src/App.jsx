@@ -6,10 +6,11 @@ import { Public_Routes } from "./Routes/Public_Routes";
 import { Private_Routes } from "./Routes/Private_Routes";
 
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
+import { RestaurantDetail } from "./components/RestaurantDetail";
+
 import LoginForm from "./Pages/Login/LoginForm.View";
 import RegisterForm from "./Pages/Register/RegisterForm.View";
 
-import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
 import PaymentForm from "./Pages/Payment/PaymentForm.View"; 
 
 import { Layout_Private } from "./layouts/Layout_Private";
@@ -59,6 +60,7 @@ function App() {
           </main>
         } />
 
+         <Route path="Details" element={<RestaurantDetail />}></Route> 
         <Route path="Details" element={<RestaurantDetail />} />
 
         <Route path="Routes" element={
