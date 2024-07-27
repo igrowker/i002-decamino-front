@@ -1,25 +1,28 @@
-import { Button, Chip } from "@nextui-org/react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Chip } from "@nextui-org/react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Layout_Public } from "./layouts/Layout_Public";
 import { Public_Routes } from "./Routes/Public_Routes";
 import { Private_Routes } from "./Routes/Private_Routes";
 
-import { logout } from "./store/auth.slice";
-import { useDispatch } from "react-redux";
-
 import { Landing_Page } from "./Pages/LandingPage/Landing_Page.View";
+import { RestaurantDetail } from "./components/RestaurantDetail";
+
 import LoginForm from "./Pages/Login/LoginForm.View";
 import RegisterForm from "./Pages/Register/RegisterForm.View";
-import { AboutUs } from "./Pages/LandingPage/AboutUs_Page.View"
-import { RestaurantDetail } from "./Pages/RestaurantDetails/RestaurantDetail.View";
-import { RoutePlanner } from "./Pages/Route/RoutePlanner.View";
+
+import PaymentForm from "./Pages/Payment/PaymentForm.View"; 
+
+import { Layout_Private } from "./layouts/Layout_Private";
+import { Profile } from "./Pages/Profile/Profile.View";
+import { AboutUs } from "./Pages/AboutUsPage/AboutUs_Page.View";
+import { RoutePlanner } from "./components/RoutePlanner";
+
+
+
+
 
 function App() {
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   return (
     <>
       <Routes>
@@ -31,28 +34,24 @@ function App() {
 
         <Route path="/Nosotros" element={
           <Layout_Public>
-            <AboutUs/>
+            <AboutUs />
           </Layout_Public>
         }/>
 
         <Route path="Profile" element={
           <Private_Routes>
-            <Layout_Public>
-              <main className="w-full h-screen gap-4 bg-gray-800 flex flex-col justify-center items-center">
-                <h1 className="text-white/80 bg-red-600/45 border-2 rounded-lg border-white/65 px-8 py-2 text-lg font-bold">PROFILE</h1>
-                <Button className="text-white font-bold" color="danger" variant="shadow"
-                onClick={()=>{dispatch(logout()); navigate("/Profile")}}
-                >Cerrar Sesión
-                </Button>
-              </main>
-            </Layout_Public>
+            <Layout_Private>
+              <Profile />
+            </Layout_Private>
           </Private_Routes>
         } />
 
-        <Route path="Payment" element={
-          <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-white font-bold" color="success" variant="shadow">PAYMENT</Chip>
-          </main>
+        <Route path="Payment/:id" element={
+          <Private_Routes>
+            <Layout_Private>
+              <PaymentForm />
+            </Layout_Private>
+          </Private_Routes>
         } />
 
         <Route path="Filter" element={
@@ -61,11 +60,19 @@ function App() {
           </main>
         } />
 
-        <Route path="Details" element={
-          <Route path="Details" element={<RestaurantDetail />}></Route>
-        } />
+         <Route path="Details" element={<RestaurantDetail />}></Route> 
+        <Route path="Details" element={<RestaurantDetail />} />
 
-        <Route path="Routes" element={<RoutePlanner />}></Route>
+        <Route path="Routes" element={
+          <Private_Routes>
+            <Layout_Private>
+              <RoutePlanner/>
+            </Layout_Private>
+          </Private_Routes>
+          
+        }>
+
+        </Route>
 
         <Route path="History" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
@@ -94,7 +101,7 @@ function App() {
         <Route path="Login" element={
           <Public_Routes>
             <Layout_Public>
-              <LoginForm/>
+              <LoginForm />
             </Layout_Public>
           </Public_Routes>
         } />
@@ -102,14 +109,14 @@ function App() {
         <Route path="Register" element={
           <Public_Routes>
             <Layout_Public>
-              <RegisterForm/>
+              <RegisterForm />
             </Layout_Public>
           </Public_Routes>
         } />
 
         <Route path="Reservations" element={
           <main className="w-full h-screen bg-gray-800 flex justify-center items-center">
-            <Chip className="text-white font-bold" color="secondary" variant="shadow">RESERVASCIONES</Chip>
+            <Chip className="text-white font-bold" color="secondary" variant="shadow">RESERVACIONES</Chip>
           </main>
         } />
 

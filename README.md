@@ -9,7 +9,7 @@
 
 ## Cómo acceder al proyecto
 Puedes acceder a la aplicación DeCamino visitando su 
-[página web](https://i002-de-camino-front-deploy.vercel.app/)
+[página web](i002-decamino-front.vercel.app)
 ## Para ejecutar el proyecto en tu entorno local, sigue estos pasos:
 Asegúrate de tener Node.js y npm instalados en tu sistema antes de ejecutar estos comandos
 1. Clona el repositorio desde GitHub:

@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const routeSlice = createSlice({
   name: 'route',
   initialState: {
-    startLocation: [0,0],
-    endLocation: [0,0],
+    startLocation: [-33.945426,-61.7270205,6],
+    endLocation: [-38.416097,-63.616672],
   },
   reducers: {
     setStartLocation: (state, action) => {

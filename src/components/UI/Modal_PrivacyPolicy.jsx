@@ -50,7 +50,7 @@ export const PrivacyPolicy = ({ children, lessBottoms = false, acceptedPolicy })
           isDismissable={false}
           placement="auto"
           classNames={{
-            backdrop: "bg-gradient-to-br from-[#94B9FF] to-[#CDFFD8] backdrop-opacity-40",
+            backdrop: "bg-gradient-to-br from-[#94B9FF]/75 to-[#CDFFD8]/75 backdrop-opacity-40",
             base: "max-h-screen",
             header: "h-[15%]",
             body:"h-[70%] overflow-y-scroll pb-12 bg-gray100/45",

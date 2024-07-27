@@ -14,7 +14,7 @@ export default {
         woodLogo: "#BC976C",
         greenT: "#7ACAB4",
         gray100: "#E6E5E5",
-        freshMint:"#50EDC2",
+        freshMint:'rgb(50, 178, 166)',
         softWood: "#DECBB5",
         gray300: "#C2BDBD",
         white: "#F9F9F9",

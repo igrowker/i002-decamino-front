@@ -4,6 +4,7 @@ import { Planea_Tu_Ruta } from "./sections/Planea_Tu_Ruta";
 
 
 export const HeroLandPage = () => {
+  
   return (
     <>
       <main
@@ -24,8 +25,8 @@ export const HeroLandPage = () => {
             </h1>
           </div>
 
-          <div>
-            <p className="font-nunito font-[500] text-[20px] text-white mt-20 md:mt-10">
+          <div >
+            <p  className="font-nunito font-[500] text-[20px] text-white mt-20 md:mt-10 ">
               Sumérgete en una experiencia única explorando las joyas de los
               pueblos rurales. Planifica tus rutas gastronómicas, apoya a pequeños
               negocios y disfruta de auténticas tradiciones locales.

@@ -42,3 +42,23 @@ export const axios_JSON_Send = async (Info) => {
         return {message : "Error al hacer la peticion", error}
     }
 }
+
+export const refresh_User = async (Token) => {
+    try {
+
+        let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${BASE_URL}/api/user/profile`,
+        headers: {  
+            'Content-Type': 'application/json', 
+            'Authorization': `Bearer ${Token}`
+        }
+    };
+        const response = await axios.request(config)
+        return response.data.response
+    } catch (error) {
+        console.log(error)
+        return {message : "Error al hacer la peticion", error}
+    }
+}
