@@ -1,14 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Icon } from "leaflet";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   MapContainer,
   TileLayer,
-  CircleMarker,
-  Marker,
-  Popup,
 } from "react-leaflet";
-import { setStartLocation, setEndLocation } from "../store/route.slice";
+import { setStartLocation } from "../store/route.slice";
 import "leaflet/dist/leaflet.css";
 import { MapComponent } from "./MapComponent";
 import { LeafletRouting } from "./LeafletRuting";
@@ -16,12 +12,24 @@ import { Markers } from "./Markers";
 
 import { LuMapPin } from "react-icons/lu";
 
+import logo from "/logosinFondo.png";
 import "leaflet-routing-machine";
+import { Button } from "@nextui-org/react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure
+} from "@nextui-org/react";
 
 export const RoutePlanner = () => {
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   //Geolocalizacion:
   const dispatch = useDispatch();
-  const { startLocation, endLocation } = useSelector((state) => state.route);
+  const { startLocation } = useSelector((state) => state.route);
   const [childWaypoints, setChildWaypoints] = useState([]);
   const [routeInfo, setRouteInfo] = useState({
     distance: 0,
@@ -72,58 +80,91 @@ export const RoutePlanner = () => {
         />
         <MapComponent center={startLocation} />
         <Markers />
-        <div className="absolute bottom-[0px] left-[0px]">
-          <span className="text-greenT text-xl rounded-full flex justify-center items-center w-[32px] h-[32px] bg-white font-semibold z-[100000]">
-            <LuMapPin/>
-          </span>
-        </div>
       </MapContainer>
       {/* Renderiza los waypoints */}
-      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      
-        <div className="grid gap-6 row-gap-10 lg:grid-cols-2">
-          <div className="lg:py-6 lg:pr-16">
-            {/* Waypoints */}
-            {childWaypoints.map((wp, index) => (
-              <div key={index} className="flex items-center space-x-4 mb-6">
-                <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center w-10 h-10 border rounded-full bg-softWood text-white">
-                    {index + 1}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-2 text-lg font-bold">{wp.name}</p>
-                  <p className="text-gray-700">{wp.description}</p>
-                </div>
-              </div>
-            ))}
-            
+      <section className="w-full h-16 bg-greenT flex justify-center px-8">
+          <Button onClick={onOpen} isIconOnly className="text-greenT text-3xl rounded-full flex justify-center items-center w-14 h-14 border-2 border-greenT bg-white font-semibold mt-[-20px] z-[2000]">
+            <LuMapPin/>
+          </Button>
+      </section>
 
-            {/* Información de Ruta */}
-            <h2 className="text-xl font-semibold mb-4">Información de Ruta</h2>
-            <p className="mb-2">
-              <strong>Distancia Total:</strong> {routeInfo.distance} metros
-            </p>
-            <p className="mb-2">
-              <strong>Puntos Intermedios:</strong>
-            </p>
-            <ul className="list-none pl-5">
-              {routeInfo.instructions.map((instruction, index) => (
-                <li key={index} className="flex items-center space-x-2 mb-2">
-                  <span className="flex items-center justify-center w-10 h-10 border rounded-full bg-softWood text-white">
-                    {index + 1}.
-                  </span>
-                  <div>
-                    <strong>{instruction.type}</strong>
-                    <br />
-                    {instruction.text}
+      <Modal
+          backdrop="opaque"
+          size="2xl"
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          isDismissable={true}
+          placement="top"
+          classNames={{
+            wrapper: "z-[2000]",
+            backdrop: "z-[2000] bg-gradient-to-br from-[#94B9FF]/45 to-[#CDFFD8]/45 backdrop-opacity-10",
+            base: "z-[2000]",
+            header: "flex justify-center bg-greenT",
+            body:"gap-2 pb-[52px] relative",
+            footer:"bg-woodLogo relative",
+            closeButton:"bg-white/45"
+          }}
+        >
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader>
+                  <h2 className="text-xl text-white font-bold">Información de Ruta</h2>
+                </ModalHeader>
+                <ModalBody>
+                  <div>                  
+                    <div >
+                      {/* Waypoints */}
+                      {childWaypoints.map((wp, index) => (
+                        <div key={index} className="flex items-center space-x-4 mb-6">
+                          <div className="flex flex-col items-center">
+                            <div className="flex items-center justify-center w-10 h-10 border rounded-full bg-softWood text-white">
+                              {index + 1}
+                            </div>
+                          </div>
+                          <div>
+                            <p className="mb-2 text-medium font-semibold">{wp.name}</p>
+                            <p className="text-gray-700">{wp.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                      
+
+                      {/* Información de Ruta */}
+                      
+                      <h2 className="mb-2">
+                        <strong className="text-lg text-greenT font-semibold">Distancia Total:</strong> {routeInfo.distance} metros
+                      </h2>
+                      <h2 className="mb-2 text-lg text-greenT font-semibold">
+                        Puntos Intermedios:
+                      </h2>
+                      <ul className="list-none pl-5">
+                        {routeInfo.instructions.map((instruction, index) => (
+                          <li key={index} className="flex items-center space-x-2 mb-2">
+                            <span className="flex items-center justify-center w-10 h-10 border rounded-full bg-softWood text-white">
+                              {index + 1}.
+                            </span>
+                            <div>
+                              <strong>{instruction.type}</strong>
+                              <br />
+                              {instruction.text}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+
+                </ModalBody>
+                <ModalFooter>
+                  <div className="absolute top-[-46px] w-full left-0">
+                    <img className="w-[60px] h-[56px]" src={logo} alt="DeCamino" />
+                  </div>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
     </>
   );
 };
